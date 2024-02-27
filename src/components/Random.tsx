@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { people } from "../data";
+import type { Person as PersonType } from "../data";
 
 type RandomProps = {
-  label: string;
+  people: PersonType[];
 };
 
-export const Random = () => {
+export const Random: React.FC<RandomProps> = ({ people }) => {
   const [person, setPerson] = useState(
     people[Math.floor(Math.random() * people.length)]
   );

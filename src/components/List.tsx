@@ -1,11 +1,10 @@
-import { people } from "../data";
 import { Person } from "./Person";
-
+import type { Person as PersonType } from "../data";
 type ListProps = {
-  label: string;
+  people: PersonType[];
 };
 
-export const List = () => {
+export const List: React.FC<ListProps> = ({ people }) => {
   return (
     <div>
       <ul className="flex flex-wrap gap-40 justify-center">
