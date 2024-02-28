@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { List } from "./components/List";
 import { Random } from "./components/Random";
-import { Select } from "@fremtind/jkl-select-react";
 import { people } from "./data";
+import { Filters } from "./components/Filters";
 
-type Filters = {
+export type Filters = {
   gender: "alle" | "mann" | "kvinne";
   status: "alle" | "midlertidig" | "doed" | "utflyttet" | "levende";
 };
@@ -16,89 +16,33 @@ function App() {
     status: "alle",
   });
 
-  const filteredPeople = people.filter((person) => {
-    if (filters.gender === "alle") return person;
-    if (filters.gender === "mann" && person.gender === "mann") return person;
-    if (filters.gender === "kvinne" && person.gender === "kvinne")
-      return person;
-  });
+  const filteredPeople = people
+    .filter((person) => {
+      if (filters.gender === "alle") return person;
+      if (filters.gender === "mann" && person.gender === "mann") return person;
+      if (filters.gender === "kvinne" && person.gender === "kvinne")
+        return person;
+
+      // gjør det samme for status
+    })
+    .filter((person) => {
+      if (filters.status === "alle") return person;
+      if (filters.status === "levende" && person.status !== "doed")
+        return person;
+      if (filters.status === "doed" && person.status === "doed") return person;
+      if (filters.status === "utflyttet" && person.status === "utflyttet")
+        return person;
+      if (filters.status === "midlertidig" && person.status === "midlertidig")
+        return person;
+    });
 
   return (
     <>
-      <h1>Personer</h1>
-      <Select
-        name="view"
-        value={view}
-        onChange={(e) => setView(e.target.value)}
-        label="Visning"
-        items={[
-          {
-            label: "Listevisning",
-            value: "LIST",
-          },
-          {
-            label: "Tilfeldig person",
-            value: "RANDOM",
-          },
-        ]}
-      />
-      <Select
-        name="view"
-        value={filters.gender}
-        onChange={(e) =>
-          setFilters({
-            ...filters,
-            gender: e.target.value,
-          })
-        }
-        label="Kjønn"
-        items={[
-          {
-            label: "Alle",
-            value: "alle",
-          },
-          {
-            label: "Mann",
-            value: "mann",
-          },
-          {
-            label: "Kvinne",
-            value: "kvinne",
-          },
-        ]}
-      />
-      <Select
-        name="view"
-        value={filters.status}
-        onChange={(e) =>
-          setFilters({
-            ...filters,
-            status: e.target.value,
-          })
-        }
-        label="Status"
-        items={[
-          {
-            label: "Alle",
-            value: "alle",
-          },
-          {
-            label: "Levende",
-            value: "levende",
-          },
-          {
-            label: "Død",
-            value: "doed",
-          },
-          {
-            label: "Utflyttet",
-            value: "utflyttet",
-          },
-          {
-            label: "Midlertidig",
-            value: "midlertidig",
-          },
-        ]}
+      <Filters
+        filters={filters}
+        setFilters={setFilters}
+        view={view}
+        setView={setView}
       />
       <main className="container max-w-[1440px] mx-auto">
         {view === "RANDOM" && <Random people={filteredPeople} />}
