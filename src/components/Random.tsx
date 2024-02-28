@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Person as PersonType } from "../data";
 
 type RandomProps = {
@@ -9,13 +9,46 @@ export const Random: React.FC<RandomProps> = ({ people }) => {
   const [person, setPerson] = useState(
     people[Math.floor(Math.random() * people.length)]
   );
+
+  useEffect(() => {
+    const onSpace = (e: KeyboardEvent) => {
+      console.log(e.key);
+      if (e.key === " ") {
+        navigator.clipboard.writeText(person.ssn);
+        setCopied(true);
+        setTimeout(() => {
+          setCopied(false);
+        }, 2000);
+      }
+    };
+    const onEnter = (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
+        setPerson(people[Math.floor(Math.random() * people.length)]);
+        setCopied(false);
+      }
+    };
+
+    window.addEventListener("keyup", (e: KeyboardEvent) => {
+      onEnter(e);
+      onSpace(e);
+    });
+  }, [person, people]);
+
+  useEffect(() => {
+    setPerson(people[Math.floor(Math.random() * people.length)]);
+  }, [people]);
   const [copied, setCopied] = useState(false);
+
+  if (people.length === 0) return <p>Ingen personer</p>;
 
   return (
     <div className="random">
       <h1>
         {person.firstName} {person.lastName}
       </h1>
+      <p>
+        {person.status} {person.gender}
+      </p>
       <input
         readOnly
         value={person.ssn}
