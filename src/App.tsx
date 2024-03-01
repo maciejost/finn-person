@@ -3,6 +3,7 @@ import { List } from "./components/List";
 import { Random } from "./components/Random";
 import { people } from "./data";
 import { Filters } from "./components/Filters";
+import "./App.css";
 
 export type Filters = {
   gender: "alle" | "mann" | "kvinne";

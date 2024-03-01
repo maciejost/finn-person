@@ -12,6 +12,7 @@
 		"test": "vitest run && tsc --noEmit"
 	},
 	"dependencies": {
+		"@fremtind/jkl-button-react": "^15.0.17",
 		"@fremtind/jkl-card": "^11.1.0",
 		"@fremtind/jkl-card-react": "^11.2.2",
 		"@fremtind/jkl-core": "^13.4.2",
