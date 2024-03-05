@@ -3,7 +3,6 @@ import { List } from "./components/List";
 import { Random } from "./components/Random";
 import { people } from "./data";
 import { Filters } from "./components/Filters";
-import "./App.css";
 
 export type Filters = {
   gender: "alle" | "mann" | "kvinne";
@@ -45,7 +44,7 @@ function App() {
         view={view}
         setView={setView}
       />
-      <main className="container max-w-[1440px] mx-auto">
+      <main className="container max-w-[1440px] mx-auto min-h-screen flex items-center justify-center mt-40">
         {view === "RANDOM" && <Random people={filteredPeople} />}
         {view === "LIST" && <List people={filteredPeople} />}
       </main>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Person as PersonType } from "../data";
+import { PrimaryButton, SecondaryButton } from "@fremtind/jkl-button-react";
 
 type RandomProps = {
   people: PersonType[];
@@ -42,14 +43,18 @@ export const Random: React.FC<RandomProps> = ({ people }) => {
   if (people.length === 0) return <p>Ingen personer</p>;
 
   return (
-    <div className="random">
-      <h1>
+    <div className=" flex flex-col gap-24 items-center -mt-[256px]">
+      <h1 className="title">
         {person.firstName} {person.lastName}
       </h1>
-      <p>
-        {person.status} {person.gender}
-      </p>
+      {person.status ||
+        (person.gender && (
+          <p className="title-small">
+            {person.status} {person.gender}
+          </p>
+        ))}
       <input
+        className="px-40 py-24 text-center border-granitt border-2 rounded-xl heading-2"
         readOnly
         value={person.ssn}
         onKeyUp={(e) => {
@@ -71,17 +76,16 @@ export const Random: React.FC<RandomProps> = ({ people }) => {
           }, 2000);
         }}
       />
-
-      <div className="buttons">
-        <button
+      <div className="flex gap-24">
+        <PrimaryButton
           onClick={() => {
             setPerson(people[Math.floor(Math.random() * people.length)]);
             setCopied(false);
           }}
         >
           Ny person
-        </button>
-        <button
+        </PrimaryButton>
+        <SecondaryButton
           onClick={() => {
             navigator.clipboard.writeText(person.ssn);
             setCopied(true);
@@ -92,7 +96,7 @@ export const Random: React.FC<RandomProps> = ({ people }) => {
           }}
         >
           Kopier til utklippstavlen
-        </button>
+        </SecondaryButton>
       </div>
       {copied && <p className="copied">Kopiert til utklippstavlen</p>}
     </div>
