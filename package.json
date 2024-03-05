@@ -16,6 +16,7 @@
 		"@fremtind/jkl-card": "^11.1.0",
 		"@fremtind/jkl-card-react": "^11.2.2",
 		"@fremtind/jkl-core": "^13.4.2",
+		"@fremtind/jkl-formatters-util": "^5.0.44",
 		"@fremtind/jkl-icons-react": "^8.5.0",
 		"@fremtind/jkl-input-group-react": "^3.0.22",
 		"@fremtind/jkl-select": "^11.1.9",

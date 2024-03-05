@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import type { Person as PersonType } from "../data";
 import { PrimaryButton, SecondaryButton } from "@fremtind/jkl-button-react";
+import { readableStatus } from "../utils/readableStatus";
+import { formatFodselsnummer } from "@fremtind/jkl-formatters-util";
 
 type RandomProps = {
   people: PersonType[];
@@ -47,19 +49,22 @@ export const Random: React.FC<RandomProps> = ({ people }) => {
       <h1 className="title">
         {person.firstName} {person.lastName}
       </h1>
-      {person.status ||
-        (person.gender && (
-          <p className="title-small">
-            {person.status} {person.gender}
-          </p>
-        ))}
+      {(person.status || person.gender) && (
+        <p className="title-small">
+          {readableStatus(person.status)} {readableStatus(person.gender)}
+        </p>
+      )}
       <input
-        className="px-40 py-24 text-center border-background-action border-2 rounded-xl heading-2 text-text-default"
+        className="p-24 text-center border-background-action border-2 rounded-xl heading-2 text-text-default w-[380px]"
         data-theme="light"
         readOnly
-        value={person.ssn}
+        value={
+          copied
+            ? "Kopiert til utklippstavlen"
+            : formatFodselsnummer(person.ssn)
+        }
         onKeyUp={(e) => {
-          if (e.key === "Enter") {
+          if (e.key === " ") {
             navigator.clipboard.writeText(person.ssn);
             setCopied(true);
 
@@ -99,7 +104,6 @@ export const Random: React.FC<RandomProps> = ({ people }) => {
           Kopier til utklippstavlen
         </SecondaryButton>
       </div>
-      {copied && <p className="copied">Kopiert til utklippstavlen</p>}
     </div>
   );
 };

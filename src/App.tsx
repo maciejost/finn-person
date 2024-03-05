@@ -4,9 +4,12 @@ import { Random } from "./components/Random";
 import { people } from "./data";
 import { Filters } from "./components/Filters";
 
+export type Status = "midlertidig" | "doed" | "utflyttet" | "levende" | "alle";
+export type Gender = "mann" | "kvinne" | "alle";
+
 export type Filters = {
-  gender: "alle" | "mann" | "kvinne";
-  status: "alle" | "midlertidig" | "doed" | "utflyttet" | "levende";
+  status: Status;
+  gender: Gender;
 };
 
 function App() {
