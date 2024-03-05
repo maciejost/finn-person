@@ -6,7 +6,7 @@ export const Person = ({ person }: { person: PersonType }) => {
 
   return (
     <button
-      className="p-40 border-stein border-2 rounded-xl w-[300px] bg-sand"
+      className="p-40 border-border-separator border-2 rounded-xl w-[300px] bg-background-container-low"
       onClick={() => {
         navigator.clipboard.writeText(person.ssn);
         setHasCopied(true);

@@ -43,7 +43,7 @@ export const Random: React.FC<RandomProps> = ({ people }) => {
   if (people.length === 0) return <p>Ingen personer</p>;
 
   return (
-    <div className=" flex flex-col gap-24 items-center -mt-[256px]">
+    <div className="bg-background-container-low py-40 px-40 rounded-xl flex flex-col gap-24 items-center mt-[128px]">
       <h1 className="title">
         {person.firstName} {person.lastName}
       </h1>
@@ -54,7 +54,8 @@ export const Random: React.FC<RandomProps> = ({ people }) => {
           </p>
         ))}
       <input
-        className="px-40 py-24 text-center border-granitt border-2 rounded-xl heading-2"
+        className="px-40 py-24 text-center border-background-action border-2 rounded-xl heading-2 text-text-default"
+        data-theme="light"
         readOnly
         value={person.ssn}
         onKeyUp={(e) => {

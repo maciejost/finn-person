@@ -15,7 +15,7 @@ export const Filters: React.FC<FiltersProps> = ({
   setView,
 }) => {
   return (
-    <section className="flex justify-center gap-24 bg-background-container-high py-24 px-40">
+    <section className="flex justify-center gap-24 bg-background-container-high py-24 px-40 pb-40 w-fit mx-auto rounded-b-xl ">
       <Select
         name="view"
         value={view}
