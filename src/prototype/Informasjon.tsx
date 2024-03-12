@@ -149,7 +149,7 @@ const Informasjon: React.FC<{
 
 	const Summary = () => {
 		return (
-			<div className='rounded-md border w-1/3 border-border-separator py-40 px-24'>
+			<div className='rounded-md border w-1/3 border-border-separator py-40 px-24 h-fit'>
 				<h2 className='heading-4 mb-16'>Oppsummering</h2>
 				<p className='body mb-8'>
 					Din Volkswagen ID.3 (EB87553) vil bli forsikret med:{' '}
@@ -181,6 +181,10 @@ const Informasjon: React.FC<{
 						i bonus som overføres
 					</CheckListItem>
 				</List>
+				<p className='mt-24 small'>
+					Vi sier opp forsikringen hos ditt nåværende selskap og
+					overfører bonusen din. Du trenger ikke gjøre noen ting.
+				</p>
 				{isPriceLoading ? (
 					<p className='heading-3 mt-24'>
 						<Loader
@@ -200,11 +204,13 @@ const Informasjon: React.FC<{
 	const Form = () => {
 		return (
 			<div className='rounded-md w-1/2 bg-hvit py-40 px-24'>
-				<h2 className='heading-3 mb-24'>Om bilen</h2>
+				<h2 className='heading-3 mb-24'>
+					Vi trenger litt mer informasjon om bedriften din
+				</h2>
 				<div className='flex flex-col gap-24'>
 					<TextInput
-						label='Epost'
-						placeholder='0 km'
+						label='E-post for kvittering'
+						placeholder='E-postadresse'
 						value={email}
 						onChange={e => setEmail(e.target.value)}
 					/>

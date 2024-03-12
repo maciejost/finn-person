@@ -158,7 +158,7 @@ const Flyt: React.FC<{
 
 	const Summary = () => {
 		return (
-			<div className='rounded-md border w-1/3 border-border-separator py-40 px-24'>
+			<div className='rounded-md border w-1/3 border-border-separator py-40 px-24 h-fit'>
 				<h2 className='heading-4 mb-16'>Oppsummering</h2>
 				<p className='body mb-8'>
 					Din Volkswagen ID.3 (EB87553) vil bli forsikret med:{' '}
@@ -190,6 +190,10 @@ const Flyt: React.FC<{
 						i bonus som overføres
 					</CheckListItem>
 				</List>
+				<p className='mt-24 small'>
+					Vi sier opp forsikringen hos ditt nåværende selskap og
+					overfører bonusen din. Du trenger ikke gjøre noen ting.
+				</p>
 				{isPriceLoading ? (
 					<p className='heading-3 mt-24'>
 						<Loader
@@ -263,7 +267,7 @@ const Flyt: React.FC<{
 		setPrice(newPrice)
 		setTimeout(() => {
 			setIsPriceLoading(false)
-		}, 500)
+		}, 1000)
 	}, [kjorelengde, egenandel, bonus])
 
 	return (
