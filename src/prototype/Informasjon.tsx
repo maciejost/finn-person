@@ -114,6 +114,85 @@ const bonusOptions = [
 	},
 ]
 
+const Form: React.FC<{
+	email: string
+	setEmail: React.Dispatch<React.SetStateAction<string>>
+	insuranceCompany: string
+	setInsuranceCompany: React.Dispatch<React.SetStateAction<string>>
+	setView: React.Dispatch<
+		React.SetStateAction<'START' | 'FLYT' | 'INFORMASJON' | 'KVITTERING'>
+	>
+	isPurchasing: boolean
+	setIsPurchasing: React.Dispatch<React.SetStateAction<boolean>>
+}> = ({
+	email,
+	setEmail,
+	insuranceCompany,
+	setInsuranceCompany,
+	setView,
+	isPurchasing,
+	setIsPurchasing,
+}) => {
+	return (
+		<div className='rounded-md w-1/2 bg-hvit py-40 px-24'>
+			<h2 className='heading-3 mb-24'>
+				Vi trenger litt mer informasjon om bedriften din
+			</h2>
+			<div className='flex flex-col gap-24'>
+				<TextInput
+					label='E-post for kvittering'
+					placeholder='E-postadresse'
+					type='email'
+					value={email}
+					onChange={e => setEmail(e.target.value)}
+				/>
+				<Select
+					name='view'
+					width='320px'
+					searchable
+					value={insuranceCompany}
+					onChange={e => setInsuranceCompany(e.target.value)}
+					label='Selskap du flytter fra'
+					items={insuranceCompanies}
+				/>
+				<Checkbox name='Vilkar' value='true'>
+					Jeg bekrefter å ha gitt riktige opplysninger, lest og
+					forstått{' '}
+					<span className='jkl-link jkl-link--external'>
+						vilkårene
+					</span>
+					.
+				</Checkbox>
+			</div>
+			<div className='mt-32 flex gap-16'>
+				<button
+					className='jkl-button jkl-button--secondary'
+					onClick={() => setView('FLYT')}
+				>
+					Tilbake
+				</button>
+
+				<PrimaryButton
+					loader={{
+						showLoader: isPurchasing,
+						textDescription: 'Flytter forsikring',
+					}}
+					onClick={() => {
+						setIsPurchasing(true)
+
+						setTimeout(() => {
+							setIsPurchasing(false)
+							setView('KVITTERING')
+						}, 2000)
+					}}
+				>
+					Flytt forsikringen
+				</PrimaryButton>
+			</div>
+		</div>
+	)
+}
+
 const Informasjon: React.FC<{
 	setView: React.Dispatch<
 		React.SetStateAction<'START' | 'FLYT' | 'INFORMASJON' | 'KVITTERING'>
@@ -202,66 +281,6 @@ const Informasjon: React.FC<{
 		)
 	}
 
-	const Form = () => {
-		return (
-			<div className='rounded-md w-1/2 bg-hvit py-40 px-24'>
-				<h2 className='heading-3 mb-24'>
-					Vi trenger litt mer informasjon om bedriften din
-				</h2>
-				<div className='flex flex-col gap-24'>
-					<TextInput
-						label='E-post for kvittering'
-						placeholder='E-postadresse'
-						value={email}
-						onChange={e => setEmail(e.target.value)}
-					/>
-					<Select
-						name='view'
-						width='320px'
-						searchable
-						value={insuranceCompany}
-						onChange={e => setInsuranceCompany(e.target.value)}
-						label='Selskap du flytter fra'
-						items={insuranceCompanies}
-					/>
-					<Checkbox name='Vilkar' value='true'>
-						Jeg bekrefter å ha gitt riktige opplysninger, lest og
-						forstått{' '}
-						<span className='jkl-link jkl-link--external'>
-							vilkårene
-						</span>
-						.
-					</Checkbox>
-				</div>
-				<div className='mt-32 flex gap-16'>
-					<button
-						className='jkl-button jkl-button--secondary'
-						onClick={() => setView('FLYT')}
-					>
-						Tilbake
-					</button>
-
-					<PrimaryButton
-						loader={{
-							showLoader: isPurchasing,
-							textDescription: 'Flytter forsikring',
-						}}
-						onClick={() => {
-							setIsPurchasing(true)
-
-							setTimeout(() => {
-								setIsPurchasing(false)
-								setView('KVITTERING')
-							}, 2000)
-						}}
-					>
-						Flytt forsikringen
-					</PrimaryButton>
-				</div>
-			</div>
-		)
-	}
-
 	return (
 		<div
 			style={{
@@ -307,7 +326,15 @@ const Informasjon: React.FC<{
 					Flytt forsikringen på din ID.3 til oss
 				</h1>
 				<div className='relative flex min-w-full gap-40'>
-					<Form />
+					<Form
+						email={email}
+						setEmail={setEmail}
+						insuranceCompany={insuranceCompany}
+						setInsuranceCompany={setInsuranceCompany}
+						setView={setView}
+						isPurchasing={isPurchasing}
+						setIsPurchasing={setIsPurchasing}
+					/>
 					<Summary />
 				</div>
 				<Dekninger

@@ -7,6 +7,102 @@ import { useEffect } from 'react'
 import { calculatePrice } from './calculatePrice'
 import { Loader } from '@fremtind/jkl-loader-react'
 
+const Form: React.FC<{
+	kilometerstand: string | undefined
+	setKilometerstand: React.Dispatch<React.SetStateAction<string | undefined>>
+	kjorelengde: string
+	setKjorelengde: React.Dispatch<React.SetStateAction<string>>
+	egenandel: string
+	setEgenandel: React.Dispatch<React.SetStateAction<string>>
+	bonus: string
+	setBonus: React.Dispatch<React.SetStateAction<string>>
+	setView: React.Dispatch<
+		React.SetStateAction<'START' | 'FLYT' | 'INFORMASJON' | 'KVITTERING'>
+	>
+}> = ({
+	kilometerstand,
+	setKilometerstand,
+	kjorelengde,
+	setKjorelengde,
+	egenandel,
+	setEgenandel,
+	bonus,
+	setBonus,
+	setView,
+}) => {
+	return (
+		<div className='rounded-md w-1/2 bg-hvit py-40 px-24'>
+			<h2 className='heading-3 mb-24'>Om bilen</h2>
+			<div className='flex flex-col gap-24'>
+				<TextInput
+					label='Kilometerstand'
+					placeholder='0 km'
+					type='number'
+					value={kilometerstand}
+					onChange={e => setKilometerstand(e.target.value)}
+				/>
+				<Select
+					name='view'
+					value={kjorelengde}
+					onChange={e => setKjorelengde(e.target.value)}
+					label='Kjørelengde'
+					items={lengthOptions}
+				/>
+				{kilometerstand &&
+					!!lengthOptionsAsNumbers.find(
+						option => option.value === kjorelengde
+					)?.label && (
+						<p className=' -mt-16 text-text-subdued'>
+							Kilometerstanden kan ikke overstige{' '}
+							{Number(kilometerstand) +
+								/* @ts-expect-error finn riktig */
+								lengthOptionsAsNumbers.find(
+									option => option.value === kjorelengde
+								)?.label}
+							km innen {formatDate(dateOneYearFromNow)}
+						</p>
+					)}
+				<Select
+					name='view'
+					value={egenandel}
+					onChange={e => setEgenandel(e.target.value)}
+					label='Egenandel'
+					items={deductibleOptions}
+				/>
+				<Select
+					name='view'
+					value={bonus}
+					labelProps={{
+						className: '!flex !items-center',
+					}}
+					/* @ts-expect-error denne eksisterer */
+					tooltipProps={{
+						content:
+							'Bonusen din overføres fra ditt nåværende forsikringsselskap. Dersom bonusen du oppgir ikke stemmer, vil prisen korrigeres deretter.',
+					}}
+					onChange={e => setBonus(e.target.value)}
+					label='Bonus'
+					items={bonusOptions}
+				/>
+			</div>
+			<div className='mt-32 flex gap-16'>
+				<button
+					className='jkl-button jkl-button--secondary'
+					onClick={() => setView('START')}
+				>
+					Tilbake
+				</button>
+				<button
+					className='jkl-button jkl-button--primary'
+					onClick={() => setView('INFORMASJON')}
+				>
+					Videre
+				</button>
+			</div>
+		</div>
+	)
+}
+
 const lengthOptions = [
 	{
 		value: '8',
@@ -223,80 +319,6 @@ const Flyt: React.FC<{
 		)
 	}
 
-	const Form = () => {
-		return (
-			<div className='rounded-md w-1/2 bg-hvit py-40 px-24'>
-				<h2 className='heading-3 mb-24'>Om bilen</h2>
-				<div className='flex flex-col gap-24'>
-					<TextInput
-						label='Kilometerstand'
-						placeholder='0 km'
-						type='number'
-						value={kilometerstand}
-						onChange={e => setKilometerstand(e.target.value)}
-					/>
-					<Select
-						name='view'
-						value={kjorelengde}
-						onChange={e => setKjorelengde(e.target.value)}
-						label='Kjørelengde'
-						items={lengthOptions}
-					/>
-					{kilometerstand &&
-						!!lengthOptionsAsNumbers.find(
-							option => option.value === kjorelengde
-						)?.label && (
-							<p className=' -mt-16 text-text-subdued'>
-								Kilometerstanden kan ikke overstige{' '}
-								{Number(kilometerstand) +
-									/* @ts-expect-error finn riktig */
-									lengthOptionsAsNumbers.find(
-										option => option.value === kjorelengde
-									)?.label}
-								km innen {formatDate(dateOneYearFromNow)}
-							</p>
-						)}
-					<Select
-						name='view'
-						value={egenandel}
-						onChange={e => setEgenandel(e.target.value)}
-						label='Egenandel'
-						items={deductibleOptions}
-					/>
-					<Select
-						name='view'
-						value={bonus}
-						labelProps={{
-							className: '!flex !items-center',
-						}}
-						/* @ts-expect-error denne eksisterer */
-						tooltipProps={{
-							content:
-								'Bonusen din overføres fra ditt nåværende forsikringsselskap. Dersom bonusen du oppgir ikke stemmer, vil prisen korrigeres deretter.',
-						}}
-						onChange={e => setBonus(e.target.value)}
-						label='Bonus'
-						items={bonusOptions}
-					/>
-				</div>
-				<div className='mt-32 flex gap-16'>
-					<button
-						className='jkl-button jkl-button--secondary'
-						onClick={() => setView('START')}
-					>
-						Tilbake
-					</button>
-					<button
-						className='jkl-button jkl-button--primary'
-						onClick={() => setView('INFORMASJON')}
-					>
-						Videre
-					</button>
-				</div>
-			</div>
-		)
-	}
-
 	useEffect(() => {
 		setIsPriceLoading(true)
 		const newPrice = calculatePrice(kjorelengde, egenandel, bonus)
@@ -351,7 +373,17 @@ const Flyt: React.FC<{
 					Flytt forsikringen på din ID.3 til oss
 				</h1>
 				<div className='relative flex min-w-full gap-40'>
-					<Form />
+					<Form
+						kilometerstand={kilometerstand}
+						setKilometerstand={setKilometerstand}
+						kjorelengde={kjorelengde}
+						setKjorelengde={setKjorelengde}
+						egenandel={egenandel}
+						setEgenandel={setEgenandel}
+						bonus={bonus}
+						setBonus={setBonus}
+						setView={setView}
+					/>
 					<Summary />
 				</div>
 				<Dekninger
