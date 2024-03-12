@@ -1,6 +1,10 @@
 import Card from './Card'
 
-const Oversikt = () => {
+const Oversikt: React.FC<{
+	setView: React.Dispatch<
+		React.SetStateAction<'START' | 'FLYT' | 'INFORMASJON' | 'KVITTERING'>
+	>
+}> = ({ setView }) => {
 	return (
 		<main>
 			<div id='innhold'>
@@ -200,7 +204,7 @@ const Oversikt = () => {
 											</footer>
 										</a>
 									</li>
-									<Card />
+									<Card setView={setView} />
 
 									<li className='agreement-overview__list-item'>
 										<a
