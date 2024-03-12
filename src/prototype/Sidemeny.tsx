@@ -42,7 +42,7 @@ const SideMeny = () => {
 										<a
 											className='jkl-link jkl-link--active'
 											data-testautoid='megameny-hjem'
-											href='/bedrift/hjem'
+											href='#'
 										>
 											Hjem{' '}
 										</a>
@@ -51,7 +51,7 @@ const SideMeny = () => {
 										<a
 											className='jkl-link '
 											data-testautoid='megameny-forsikringer'
-											href='/bedrift/forsikringer'
+											href='#'
 										>
 											Forsikringer{' '}
 										</a>
@@ -60,7 +60,7 @@ const SideMeny = () => {
 										<a
 											className='jkl-link '
 											data-testautoid='megameny-faktura'
-											href='/bedrift/faktura'
+											href='#'
 										>
 											Faktura{' '}
 										</a>
@@ -69,7 +69,7 @@ const SideMeny = () => {
 										<a
 											className='jkl-link '
 											data-testautoid='megameny-dokumenter'
-											href='/bedrift/dokumenter'
+											href='#'
 										>
 											Dokumenter{' '}
 										</a>
@@ -78,7 +78,7 @@ const SideMeny = () => {
 										<a
 											className='jkl-link '
 											data-testautoid='megameny-forsikringer/kjop-forsikring'
-											href='/bedrift/forsikringer/kjop-forsikring'
+											href='#'
 										>
 											Kjøp forsikring{' '}
 										</a>
@@ -93,7 +93,7 @@ const SideMeny = () => {
 										<a
 											className='jkl-link '
 											data-testautoid='megameny-ansatte-navn'
-											href='/bedrift/ansatte-navn'
+											href='#'
 										>
 											Meld inn/ut ansatte{' '}
 										</a>
@@ -102,7 +102,7 @@ const SideMeny = () => {
 										<a
 											className='jkl-link '
 											data-testautoid='megameny-tilganger'
-											href='/bedrift/tilganger'
+											href='#'
 										>
 											Tilganger - ALBJERK BIL RINGERIKE AS{' '}
 										</a>
@@ -117,7 +117,7 @@ const SideMeny = () => {
 										<a
 											className='jkl-link '
 											data-testautoid='megameny-kontakt-oss'
-											href='/bedrift/kontakt-oss'
+											href='#'
 										>
 											Kontakt oss{' '}
 										</a>
@@ -147,7 +147,7 @@ const SideMeny = () => {
 							className='sidemeny__loggut jkl-button jkl-button--secondary'
 							data-testid='knapp-bytt-bedrift'
 							data-testautoid='knapp-bytt-bedrift'
-							href='/bedrift'
+							href='#'
 						>
 							Bytt bedrift
 						</a>
@@ -158,7 +158,7 @@ const SideMeny = () => {
 								<li>
 									<a
 										className='jkl-link'
-										href='https://kfb.test.sparebank1.no/kfb/frontend/kundeklient/817203752/oversikt'
+										href='#'
 										target='_blank'
 										rel='noopener noreferrer'
 										data-testautoid='ga-til-pensjon'
@@ -170,7 +170,7 @@ const SideMeny = () => {
 								<li>
 									<a
 										className='jkl-link'
-										href='https://www.sparebank1.no/nb/bank/bedrift/kundeservice/verktoy/meld-skade-for-bedrifter.html'
+										href='#'
 										target='_blank'
 										rel='noopener noreferrer'
 										data-testautoid='melde-skade'

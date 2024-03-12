@@ -252,10 +252,7 @@ const Informasjon: React.FC<{
 			>
 				<ol className='jkl-breadcrumb__list'>
 					<li className='jkl-breadcrumb__item'>
-						<a
-							className='jkl-link'
-							href='http://localhost.sparebank1.no:3000/bedrift/hjem'
-						>
+						<a className='jkl-link' href='#'>
 							Hjem
 						</a>
 					</li>
@@ -266,10 +263,7 @@ const Informasjon: React.FC<{
 						›
 					</span>
 					<li className='jkl-breadcrumb__item'>
-						<a
-							className='jkl-link'
-							href='http://localhost.sparebank1.no:3000/bedrift/forsikringer/kjop-forsikring'
-						>
+						<a className='jkl-link' href='#'>
 							Kjøp forsikring
 						</a>
 					</li>
@@ -280,11 +274,7 @@ const Informasjon: React.FC<{
 						›
 					</span>
 					<li className='jkl-breadcrumb__item'>
-						<a
-							aria-current='page'
-							className='jkl-link'
-							href='http://localhost.sparebank1.no:3000/bedrift/kjop/reise'
-						>
+						<a aria-current='page' className='jkl-link' href='#'>
 							Bil næring
 						</a>
 					</li>

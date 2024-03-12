@@ -21,10 +21,7 @@ const Oversikt: React.FC<{
 							>
 								<ol className='jkl-breadcrumb__list'>
 									<li className='jkl-breadcrumb__item'>
-										<a
-											className='jkl-link'
-											href='/bedrift/hjem'
-										>
+										<a className='jkl-link' href='#'>
 											Hjem
 										</a>
 									</li>
@@ -38,7 +35,7 @@ const Oversikt: React.FC<{
 										<a
 											aria-current='page'
 											className='jkl-link'
-											href='/bedrift/forsikringer'
+											href='#'
 										>
 											Dine forsikringer
 										</a>
@@ -49,7 +46,7 @@ const Oversikt: React.FC<{
 								<h1>Dine forsikringer</h1>
 								<div className='side-header__toolbar'>
 									<a
-										href='https://www.sparebank1.no/nb/bank/bedrift/kundeservice/verktoy/meld-skade-for-bedrifter.html'
+										href='#'
 										className='jkl-button jkl-button--primary'
 										data-density='compact'
 										target='_blank'
@@ -61,7 +58,7 @@ const Oversikt: React.FC<{
 									<a
 										data-density='compact'
 										className='jkl-button jkl-button--secondary'
-										href='/bedrift/ansattbrosjyre'
+										href='#'
 									>
 										Lag ansattbrosjyre
 									</a>
@@ -168,10 +165,7 @@ const Oversikt: React.FC<{
 							>
 								<ul className='agreement-overview__list'>
 									<li className='agreement-overview__list-item'>
-										<a
-											className='agreement-card'
-											href='/bedrift/forsikringer/OTk0NDY5MTI2Ok5JQ0U6VjA1OjIwMTMwOTI6MzUzMDYwOTQ6MTY6IDpbNjcsIDkzLCAzNywgODYsIDIwLCA3NywgLTQ3LCA1MiwgNDMsIC03OSwgLTk0LCA1MywgMjIsIDEwMCwgLTExOSwgLTc0LCAtMTA5LCA0LCAtMjksIC01NywgMTAyLCA0MiwgODAsIC00NiwgMTEwLCA2OCwgOTIsIDY1LCAtMzAsIC0yMCwgLTI5LCAzNiwgOSwgLTM5LCAxMDcsIC0xOCwgLTcyLCAtNjAsIDgwLCA4MSwgMzIsIDgwLCAtMTMsIDEyNywgOTQsIDE0LCAtMTE4LCA0MiwgMTcsIDQzLCAtOTgsIDc5LCAtMTI4LCA4NywgMTIyLCAtOTYsIC0yNSwgMTA2LCA1MSwgMzAsIC01NCwgOTksIDEyNSwgLTgwXQ=='
-										>
+										<a className='agreement-card' href='#'>
 											<div className='agreement-card__content'>
 												<h2 className='bm-typography jkl-heading-2 agreement-card__heading'>
 													Bmw 535d Xdrive&nbsp;→
@@ -189,10 +183,7 @@ const Oversikt: React.FC<{
 									</li>
 
 									<li className='agreement-overview__list-item'>
-										<a
-											className='agreement-card'
-											href='/bedrift/forsikringer/OTk0NDY5MTI2Ok5JQ0U6VjA1OjIwMTMwOTI6MzUzNDU1MjI6MjogOlstMywgMzcsIC04MCwgNTMsIC01NywgNzgsIDY5LCA2NiwgLTk2LCAtMjcsIDI1LCA2OSwgMTEsIDExNiwgLTIzLCAtNzYsIC0xLCAtMTI1LCAxOCwgLTExLCAtODMsIC00MSwgODcsIC02LCAtNDYsIDIzLCAtMTYsIC0xMDEsIC04OCwgLTMzLCA1NCwgMTExLCAxMDMsIC01OCwgNDYsIDgxLCAtODksIDEwNiwgLTQ3LCA5MSwgLTEwOCwgMTQsIC0xMDcsIDk5LCAtMjQsIC04OSwgMTE0LCAyMCwgMTcsIDMzLCAxMTYsIDEyNCwgMTExLCA4NSwgOTgsIC05NiwgMTIxLCAzLCA2MiwgOTUsIDcsIDY5LCAtNzMsIDQ4XQ=='
-										>
+										<a className='agreement-card' href='#'>
 											<div className='agreement-card__content'>
 												<h2 className='bm-typography jkl-heading-2 agreement-card__heading'>
 													Ford Transit Connect&nbsp;→
@@ -211,10 +202,7 @@ const Oversikt: React.FC<{
 									<Card setView={setView} />
 
 									<li className='agreement-overview__list-item'>
-										<a
-											className='agreement-card'
-											href='/bedrift/forsikringer/OTk0NDY5MTI2Ok5JQ0U6VjA1OjIwMTMwOTI6MzUzMDYxMTk6MTQ6IDpbOTcsIDE0LCAtOTMsIDY4LCA4MSwgODgsIDAsIDU0LCAtMTEyLCAtMTA4LCAtMzcsIC0xMTEsIC01NiwgNDcsIC05NSwgMzcsIC05NiwgLTM0LCAtMTI4LCAtNjgsIC0zOSwgMzcsIDE1LCAxMDgsIDY2LCAtMTI3LCA3NCwgLTEwNCwgLTU0LCAtMzksIDU0LCAzMiwgMzQsIDMwLCAxMTUsIDEwOSwgLTEwMCwgNiwgODIsIC00MSwgLTYxLCAyLCA1MiwgNjAsIC00NSwgMTEyLCA3MSwgLTU2LCA0NiwgLTk2LCAxMTksIC0xNywgLTgyLCAxMDIsIC01NSwgMTAsIC01MCwgMTA2LCAtODAsIC0xMTcsIC0xMSwgLTI1LCAxMDIsIC02OF0='
-										>
+										<a className='agreement-card' href='#'>
 											<div className='agreement-card__content'>
 												<h2 className='bm-typography jkl-heading-2 agreement-card__heading'>
 													Smart Fortwo Cabrio
@@ -234,11 +222,7 @@ const Oversikt: React.FC<{
 								</ul>
 							</div>
 						</div>
-						<a
-							className='jkl-nav-link'
-							href='https://kundeforsikring.sparebank1.no/'
-							target='_blank'
-						>
+						<a className='jkl-nav-link' href='#' target='_blank'>
 							Gå til dine privatforsikringer
 						</a>
 						<div className='side-footer'>
