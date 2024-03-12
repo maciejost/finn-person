@@ -1,6 +1,10 @@
+import { formatDate, formatValuta } from '@fremtind/jkl-formatters-util'
+
 const Kvittering = () => {
+	const dateOneMonthFromNow = new Date()
+	dateOneMonthFromNow.setMonth(dateOneMonthFromNow.getMonth() + 1)
 	return (
-		<div>
+		<div className='pr-24'>
 			<nav
 				aria-label='Sti'
 				className='jkl-breadcrumb max-width-content mx-auto w-full  pt-16 md:px-40'
@@ -39,10 +43,15 @@ const Kvittering = () => {
 				<div className='relative flex min-w-full items-center justify-end   gap-40'>
 					<div className='sm:absolute sm:left-0  w-full flex-shrink-0'>
 						<div className='flex w-full flex-wrap justify-between gap-40 md:flex-nowrap md:justify-start md:gap-64'>
-							<div className='body mb-64 flex min-w-[320px] max-w-[500px] flex-col gap-24 rounded-[4px] rounded-s bg-background-container-high p-24 sm:mb-0 sm:gap-40 sm:p-40'>
+							<div className='body mb-64 flex min-w-[320px] max-w-[600px] flex-col gap-16 rounded-[4px] rounded-s bg-background-container-high p-24 sm:mb-0 sm:gap-24 sm:p-40'>
 								<h1 className='title-small'>Kvittering</h1>
 								<p className='body'>
-									Forsikringen starter 12.03.2024.
+									Forsikringen på din ID.3 starter{' '}
+									{formatDate(dateOneMonthFromNow)}. Vi sier
+									opp forsikringen din hos{' '}
+									{'{FORSIKRINGSSELSKAP}'} og flytter den til
+									oss sammen med bonusen din, du trenger ikke
+									å gjøre noen ting.
 								</p>
 								<div>
 									<p className=' font-bold '>Dekker</p>
@@ -73,7 +82,7 @@ const Kvittering = () => {
 								<div>
 									<p className='font-bold '>Pris</p>
 									<p className='body'>
-										5&nbsp;061&nbsp;kr per år
+										{formatValuta(1344)} per måned
 									</p>
 								</div>
 								<div>
@@ -84,12 +93,15 @@ const Kvittering = () => {
 									</p>
 								</div>
 								<div>
-									<a
+									<button
 										className='jkl-button jkl-button--primary '
-										href='#'
+										onClick={() => {
+											window.location.href =
+												window.location.origin
+										}}
 									>
 										Se avtalen
-									</a>
+									</button>
 								</div>
 							</div>
 						</div>
@@ -99,11 +111,8 @@ const Kvittering = () => {
 						loading='lazy'
 						width='1000'
 						height='900'
-						decoding='async'
-						data-nimg='1'
-						className=' -z-10   h-[900px] hidden w-full max-w-[80vw] rounded-lg object-cover sm:block md:max-w-[1000px]'
-						style={{ color: 'transparent' }}
-						src='/logo.svg'
+						className='    h-[900px] hidden w-full max-w-[80vw] rounded-lg object-cover sm:block md:max-w-[1000px]'
+						src='static/bilde.jpg'
 					/>
 				</div>
 				<div className='mb-64 flex flex-wrap gap-40  sm:mb-64 sm:mt-104 sm:gap-64'>

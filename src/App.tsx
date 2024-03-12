@@ -22,7 +22,7 @@ function App() {
 	const [kjorelengde, setKjorelengde] = useState('12')
 	const [egenandel, setEgenandel] = useState('1')
 	const [bonus, setBonus] = useState('75')
-	const [kilometerstand, setKilometerstand] = useState('10000')
+	const [kilometerstand, setKilometerstand] = useState<string | undefined>()
 	const [selectedCoverage, setSelectedCoverage] = useState<
 		'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
 	>('Kasko')

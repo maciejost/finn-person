@@ -17,6 +17,10 @@
 @tailwind components;
 @tailwind utilities;
 
+label {
+	width: fit-content;
+}
+
 @font-face {
 	font-family: 'Fremtind Grotesk';
 	font-display: fallback;

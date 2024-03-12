@@ -122,8 +122,8 @@ const Flyt: React.FC<{
 	setEgenandel: React.Dispatch<React.SetStateAction<string>>
 	bonus: string
 	setBonus: React.Dispatch<React.SetStateAction<string>>
-	kilometerstand: string
-	setKilometerstand: React.Dispatch<React.SetStateAction<string>>
+	kilometerstand: string | undefined
+	setKilometerstand: React.Dispatch<React.SetStateAction<string | undefined>>
 	selectedCoverage: 'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
 	setSelectedCoverage: React.Dispatch<
 		React.SetStateAction<'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'>
@@ -330,48 +330,3 @@ const Flyt: React.FC<{
 }
 
 export default Flyt
-
-/* 	<Select
-					name='view'
-					value={bruksomrade}
-					onChange={e => setBruksomrade(e.target.value)}
-					label='Bruksområde'
-					items={[
-						{
-							value: '25',
-							label: 'Drosje',
-						},
-						{
-							value: '60',
-							label: 'Utleiebil verksted, bilforhandler o.l.',
-						},
-						{
-							value: '50',
-							label: 'Begravelse bil',
-						},
-						{
-							value: '40',
-							label: 'Skolebil',
-						},
-						{
-							value: '30',
-							label: 'Budbil',
-						},
-						{
-							value: '10',
-							label: 'Yrkesbil',
-						},
-						{
-							value: '65',
-							label: 'Demobil',
-						},
-						{
-							value: '70',
-							label: 'Utleie primærvirksomhet',
-						},
-						{
-							value: '55',
-							label: 'Sporadisk utleie av bil',
-						},
-					]}
-				/> */
