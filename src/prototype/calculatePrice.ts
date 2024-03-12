@@ -3,7 +3,7 @@ export const calculatePrice = (
 	egenandel: string,
 	bonus: string
 ) => {
-	let basePrice = 1000
+	let basePrice = 758
 
 	const setPrice = (newPrice: number) => (basePrice = newPrice)
 
@@ -92,5 +92,5 @@ export const calculatePrice = (
 			break
 	}
 
-	return basePrice
+	return Math.round(basePrice)
 }

@@ -9,7 +9,8 @@
 @import url('@fremtind/jkl-icon-button/icon-button.min.css');
 @import url('@fremtind/jkl-tooltip/tooltip.min.css');
 @import url('@fremtind/jkl-list/list.min.css');
-
+@import url('@fremtind/jkl-loader/loader.min.css');
+@import url('@fremtind/jkl-loader/skeleton-loader.min.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

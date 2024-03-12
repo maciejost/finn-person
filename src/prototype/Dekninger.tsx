@@ -1,5 +1,6 @@
 import { formatValuta } from '@fremtind/jkl-formatters-util'
 import { CheckListItem, List } from '@fremtind/jkl-list-react'
+import { Loader } from '@fremtind/jkl-loader-react'
 import React from 'react'
 
 const Card: React.FC<{
@@ -27,11 +28,15 @@ const Card: React.FC<{
 		>
 			<h3 className='mb-4 text-2xl font-semibold'>{title}</h3>
 			{isPriceLoading ? (
-				<p>loadin</p>
+				<p className='my-16'>
+					<Loader
+						textDescription='Laster pris'
+						/* className='!justify-start' */
+					/>
+				</p>
 			) : (
 				<div className=' my-8'>
-					<span className=''>{formatValuta(price)}</span>/måned,
-					inkludert trafikkforsikringsavgift
+					<span className=''>{formatValuta(price)}</span>/måned
 				</div>
 			)}
 			<List className='mb-8 body space-y-4 text-left'>
@@ -83,7 +88,7 @@ export const Dekninger: React.FC<{
 					<div className='grid grid-cols-4 gap-16 justify-center'>
 						<Card
 							title='Toppkasko'
-							price={price * 1.7}
+							price={Math.round(price * 1.7)}
 							isPriceLoading={isPriceLoading}
 							covers={toppKasko}
 							setSelectedCoverage={() =>
@@ -93,7 +98,7 @@ export const Dekninger: React.FC<{
 						/>
 						<Card
 							title='Kasko'
-							price={price * 1.2}
+							price={Math.round(price * 1.2)}
 							isPriceLoading={isPriceLoading}
 							covers={kasko}
 							setSelectedCoverage={() =>
@@ -103,7 +108,7 @@ export const Dekninger: React.FC<{
 						/>
 						<Card
 							title='Delkasko'
-							price={price * 0.8}
+							price={Math.round(price * 0.8)}
 							isPriceLoading={isPriceLoading}
 							covers={delKasko}
 							setSelectedCoverage={() =>
@@ -113,7 +118,7 @@ export const Dekninger: React.FC<{
 						/>
 						<Card
 							title='Ansvar'
-							price={price * 0.5}
+							price={Math.round(price * 0.5)}
 							isPriceLoading={isPriceLoading}
 							covers={ansvar}
 							setSelectedCoverage={() =>

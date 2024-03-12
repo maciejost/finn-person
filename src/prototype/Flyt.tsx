@@ -5,6 +5,7 @@ import { formatValuta } from '@fremtind/jkl-formatters-util'
 import { Select } from '@fremtind/jkl-select-react'
 import { useEffect, useState } from 'react'
 import { calculatePrice } from './calculatePrice'
+import { Loader } from '@fremtind/jkl-loader-react'
 
 const lengthOptions = [
 	{
@@ -185,10 +186,15 @@ const Flyt: React.FC<{
 					</CheckListItem>
 				</List>
 				{isPriceLoading ? (
-					<span>loadin</span>
+					<p className='heading-3 mt-24'>
+						<Loader
+							textDescription='Laster pris'
+							className='!justify-start'
+						/>
+					</p>
 				) : (
 					<p className='heading-3 mt-24'>
-						{formatValuta(price * multiplier)}/måned
+						{formatValuta(Math.round(price * multiplier))}/måned
 					</p>
 				)}
 			</div>
