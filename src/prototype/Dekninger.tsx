@@ -22,11 +22,11 @@ const Card: React.FC<{
 	return (
 		<div
 			onClick={setSelectedCoverage}
-			className={`flex body cursor-pointer flex-col p-6 transition-all mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white bg-hvit ${
+			className={`flex body flex-col justify-start transition-all items-center px-16 py-24 rounded-lg bg-hvit border-border-separator border ${
 				isCurrent && '!bg-[#C8ECD2] -translate-y-6'
 			}`}
 		>
-			<h3 className='mb-4 text-2xl font-semibold'>{title}</h3>
+			<h3 className='mb-8 font-bold heading-3'>{title}</h3>
 			{isPriceLoading ? (
 				<p className='my-16'>
 					<Loader
@@ -35,10 +35,12 @@ const Card: React.FC<{
 					/>
 				</p>
 			) : (
-				<div className=' my-8'>
-					<span className=''>{formatValuta(price)}</span>/måned
+				<div className='font-bold mt-8 pb-8 border-b w-full text-center border-border-separator mb-16 '>
+					<span className=''>{formatValuta(price)}</span>
+					/måned
 				</div>
 			)}
+			<div className='body text-left self-start mb-8'>Dekker:</div>
 			<List className='mb-8 body space-y-4 text-left'>
 				{covers.map(item => (
 					<CheckListItem
