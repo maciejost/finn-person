@@ -5,7 +5,7 @@ const Card: React.FC<{
 }> = ({ setView }) => {
 	return (
 		<li
-			className='agreement-overview__list-item'
+			className='agreement-overview__list-item cursor-pointer'
 			onClick={() => setView('FLYT')}
 		>
 			<span className='agreement-card !bg-[#D9DDFF]'>
