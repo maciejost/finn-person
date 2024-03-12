@@ -266,6 +266,14 @@ const Flyt: React.FC<{
 					<Select
 						name='view'
 						value={bonus}
+						labelProps={{
+							className: '!flex !items-center',
+						}}
+						/* @ts-expect-error denne eksisterer */
+						tooltipProps={{
+							content:
+								'Bonusen din overføres fra ditt nåværende forsikringsselskap. Dersom bonusen du oppgir ikke stemmer, vil prisen korrigeres deretter.',
+						}}
 						onChange={e => setBonus(e.target.value)}
 						label='Bonus'
 						items={bonusOptions}

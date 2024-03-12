@@ -21,6 +21,13 @@ label {
 	width: fit-content;
 }
 
+.jkl-tooltip-question-button {
+	margin-bottom: 0.25rem;
+	height: 24px !important;
+	display: flex !important;
+	align-items: start !important;
+}
+
 @font-face {
 	font-family: 'Fremtind Grotesk';
 	font-display: fallback;
