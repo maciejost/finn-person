@@ -3,7 +3,6 @@ import { Dekninger } from './Dekninger'
 import { CheckListItem, List } from '@fremtind/jkl-list-react'
 import { formatValuta } from '@fremtind/jkl-formatters-util'
 import { Select } from '@fremtind/jkl-select-react'
-import { useState } from 'react'
 
 const lengthOptions = [
 	{
@@ -114,15 +113,31 @@ const Flyt: React.FC<{
 	setView: React.Dispatch<
 		React.SetStateAction<'START' | 'FLYT' | 'INFORMASJON' | 'KVITTERING'>
 	>
-}> = ({ setView }) => {
-	const [kjorelengde, setKjorelengde] = useState('12')
-	const [egenandel, setEgenandel] = useState('1')
-	const [bonus, setBonus] = useState('75')
-	const [kilometerstand, setKilometerstand] = useState('10000')
-	const [selectedCoverage, setSelectedCoverage] = useState<
-		'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
-	>('Kasko')
-
+	kjorelengde: string
+	setKjorelengde: React.Dispatch<React.SetStateAction<string>>
+	egenandel: string
+	setEgenandel: React.Dispatch<React.SetStateAction<string>>
+	bonus: string
+	setBonus: React.Dispatch<React.SetStateAction<string>>
+	kilometerstand: string
+	setKilometerstand: React.Dispatch<React.SetStateAction<string>>
+	selectedCoverage: 'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
+	setSelectedCoverage: React.Dispatch<
+		React.SetStateAction<'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'>
+	>
+}> = ({
+	setView,
+	kjorelengde,
+	setKjorelengde,
+	egenandel,
+	setEgenandel,
+	bonus,
+	setBonus,
+	kilometerstand,
+	setKilometerstand,
+	selectedCoverage,
+	setSelectedCoverage,
+}) => {
 	const Summary = () => {
 		return (
 			<div className='rounded-md border w-1/3 border-border-separator py-40 px-24'>
