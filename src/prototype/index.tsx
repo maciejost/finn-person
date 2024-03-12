@@ -4,7 +4,12 @@ const Prototype: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 			<header className='flex  h-64 flex-shrink-0 items-center justify-center bg-background-container-high px-40'>
 				<span className='font-bold'>LOGO</span>
 			</header>
-			<main className='flex'>{children}</main>
+			<main
+				className='grid '
+				style={{ gridTemplateColumns: '360px 1fr' }}
+			>
+				{children}
+			</main>
 			<footer
 				data-theme='dark'
 				className='flex flex-shrink-0 flex-wrap justify-between gap-24 bg-background-container-low p-40 pb-24 text-16 '

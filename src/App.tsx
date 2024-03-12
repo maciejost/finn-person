@@ -1,7 +1,3 @@
-import { useState } from 'react'
-import { List } from './components/List'
-import { Random } from './components/Random'
-import { people } from './data'
 import { Filters } from './components/Filters'
 import Prototype from './prototype'
 import SideMeny from './prototype/Sidemeny'
