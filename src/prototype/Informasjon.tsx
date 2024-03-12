@@ -6,6 +6,7 @@ import { Select } from '@fremtind/jkl-select-react'
 import { useState } from 'react'
 import { Loader } from '@fremtind/jkl-loader-react'
 import { Checkbox } from '@fremtind/jkl-checkbox-react'
+import { PrimaryButton } from '@fremtind/jkl-button-react'
 
 const lengthOptions = [
 	{
@@ -144,6 +145,7 @@ const Informasjon: React.FC<{
 
 	const [insuranceCompany, setInsuranceCompany] = useState('')
 	const [email, setEmail] = useState('')
+	const [isPurchasing, setIsPurchasing] = useState(false)
 
 	const Summary = () => {
 		return (
@@ -229,12 +231,23 @@ const Informasjon: React.FC<{
 					>
 						Tilbake
 					</button>
-					<button
-						className='jkl-button jkl-button--primary'
-						onClick={() => setView('KVITTERING')}
+
+					<PrimaryButton
+						loader={{
+							showLoader: isPurchasing,
+							textDescription: 'Flytter forsikring',
+						}}
+						onClick={() => {
+							setIsPurchasing(true)
+
+							setTimeout(() => {
+								setIsPurchasing(false)
+								setView('KVITTERING')
+							}, 2000)
+						}}
 					>
-						Videre
-					</button>
+						Flytt forsikringen
+					</PrimaryButton>
 				</div>
 			</div>
 		)
