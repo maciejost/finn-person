@@ -92,7 +92,5 @@ export const calculatePrice = (
 			break
 	}
 
-	console.log('basePrice', basePrice)
-
 	return basePrice
 }

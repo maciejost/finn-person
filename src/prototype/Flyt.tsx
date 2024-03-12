@@ -249,7 +249,6 @@ const Flyt: React.FC<{
 	useEffect(() => {
 		setIsPriceLoading(true)
 		const newPrice = calculatePrice(kjorelengde, egenandel, bonus)
-		console.log('newPrice', newPrice)
 		setPrice(newPrice)
 		setTimeout(() => {
 			setIsPriceLoading(false)
