@@ -3,9 +3,9 @@ import { Dekninger } from './Dekninger'
 import { CheckListItem, List } from '@fremtind/jkl-list-react'
 import { formatValuta } from '@fremtind/jkl-formatters-util'
 import { Select } from '@fremtind/jkl-select-react'
-import { useEffect } from 'react'
-import { calculatePrice } from './calculatePrice'
+import { useState } from 'react'
 import { Loader } from '@fremtind/jkl-loader-react'
+import { Checkbox } from '@fremtind/jkl-checkbox-react'
 
 const lengthOptions = [
 	{
@@ -112,42 +112,28 @@ const bonusOptions = [
 	},
 ]
 
-const Flyt: React.FC<{
+const Informasjon: React.FC<{
 	setView: React.Dispatch<
 		React.SetStateAction<'START' | 'FLYT' | 'INFORMASJON' | 'KVITTERING'>
 	>
 	kjorelengde: string
-	setKjorelengde: React.Dispatch<React.SetStateAction<string>>
 	egenandel: string
-	setEgenandel: React.Dispatch<React.SetStateAction<string>>
 	bonus: string
-	setBonus: React.Dispatch<React.SetStateAction<string>>
-	kilometerstand: string
-	setKilometerstand: React.Dispatch<React.SetStateAction<string>>
 	selectedCoverage: 'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
 	setSelectedCoverage: React.Dispatch<
 		React.SetStateAction<'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'>
 	>
 	price: number
 	isPriceLoading: boolean
-	setPrice: React.Dispatch<React.SetStateAction<number>>
-	setIsPriceLoading: React.Dispatch<React.SetStateAction<boolean>>
 }> = ({
 	setView,
 	kjorelengde,
-	setKjorelengde,
 	egenandel,
-	setEgenandel,
 	bonus,
-	setBonus,
-	kilometerstand,
-	setKilometerstand,
 	selectedCoverage,
 	setSelectedCoverage,
 	price,
 	isPriceLoading,
-	setPrice,
-	setIsPriceLoading,
 }) => {
 	let multiplier = 1
 
@@ -155,6 +141,9 @@ const Flyt: React.FC<{
 	if (selectedCoverage === 'Delkasko') multiplier = 0.8
 	if (selectedCoverage === 'Ansvar') multiplier = 0.5
 	if (selectedCoverage === 'Kasko') multiplier = 1.2
+
+	const [insuranceCompany, setInsuranceCompany] = useState('')
+	const [email, setEmail] = useState('')
 
 	const Summary = () => {
 		return (
@@ -212,43 +201,37 @@ const Flyt: React.FC<{
 				<h2 className='heading-3 mb-24'>Om bilen</h2>
 				<div className='flex flex-col gap-24'>
 					<TextInput
-						label='Kilometerstand'
+						label='Epost'
 						placeholder='0 km'
-						value={kilometerstand}
-						onChange={e => setKilometerstand(e.target.value)}
+						value={email}
+						onChange={e => setEmail(e.target.value)}
 					/>
 					<Select
 						name='view'
-						value={kjorelengde}
-						onChange={e => setKjorelengde(e.target.value)}
-						label='Kjørelengde'
+						value={insuranceCompany}
+						onChange={e => setInsuranceCompany(e.target.value)}
+						label='Selskap du flytter fra'
 						items={lengthOptions}
 					/>
-					<Select
-						name='view'
-						value={egenandel}
-						onChange={e => setEgenandel(e.target.value)}
-						label='Egenandel'
-						items={deductibleOptions}
-					/>
-					<Select
-						name='view'
-						value={bonus}
-						onChange={e => setBonus(e.target.value)}
-						label='Bonus'
-						items={bonusOptions}
-					/>
+					<Checkbox name='Vilkar' value='true'>
+						Jeg bekrefter å ha gitt riktige opplysninger, lest og
+						forstått{' '}
+						<span className='jkl-link jkl-link--external'>
+							vilkårene
+						</span>
+						.
+					</Checkbox>
 				</div>
 				<div className='mt-32 flex gap-16'>
 					<button
 						className='jkl-button jkl-button--secondary'
-						onClick={() => setView('START')}
+						onClick={() => setView('FLYT')}
 					>
 						Tilbake
 					</button>
 					<button
 						className='jkl-button jkl-button--primary'
-						onClick={() => setView('INFORMASJON')}
+						onClick={() => setView('KVITTERING')}
 					>
 						Videre
 					</button>
@@ -256,15 +239,6 @@ const Flyt: React.FC<{
 			</div>
 		)
 	}
-
-	useEffect(() => {
-		setIsPriceLoading(true)
-		const newPrice = calculatePrice(kjorelengde, egenandel, bonus)
-		setPrice(newPrice)
-		setTimeout(() => {
-			setIsPriceLoading(false)
-		}, 500)
-	}, [kjorelengde, egenandel, bonus])
 
 	return (
 		<div
@@ -278,7 +252,10 @@ const Flyt: React.FC<{
 			>
 				<ol className='jkl-breadcrumb__list'>
 					<li className='jkl-breadcrumb__item'>
-						<a className='jkl-link' href='#'>
+						<a
+							className='jkl-link'
+							href='http://localhost.sparebank1.no:3000/bedrift/hjem'
+						>
 							Hjem
 						</a>
 					</li>
@@ -289,7 +266,10 @@ const Flyt: React.FC<{
 						›
 					</span>
 					<li className='jkl-breadcrumb__item'>
-						<a className='jkl-link' href='#'>
+						<a
+							className='jkl-link'
+							href='http://localhost.sparebank1.no:3000/bedrift/forsikringer/kjop-forsikring'
+						>
 							Kjøp forsikring
 						</a>
 					</li>
@@ -300,7 +280,11 @@ const Flyt: React.FC<{
 						›
 					</span>
 					<li className='jkl-breadcrumb__item'>
-						<a aria-current='page' className='jkl-link' href='#'>
+						<a
+							aria-current='page'
+							className='jkl-link'
+							href='http://localhost.sparebank1.no:3000/bedrift/kjop/reise'
+						>
 							Bil næring
 						</a>
 					</li>
@@ -325,49 +309,4 @@ const Flyt: React.FC<{
 	)
 }
 
-export default Flyt
-
-/* 	<Select
-					name='view'
-					value={bruksomrade}
-					onChange={e => setBruksomrade(e.target.value)}
-					label='Bruksområde'
-					items={[
-						{
-							value: '25',
-							label: 'Drosje',
-						},
-						{
-							value: '60',
-							label: 'Utleiebil verksted, bilforhandler o.l.',
-						},
-						{
-							value: '50',
-							label: 'Begravelse bil',
-						},
-						{
-							value: '40',
-							label: 'Skolebil',
-						},
-						{
-							value: '30',
-							label: 'Budbil',
-						},
-						{
-							value: '10',
-							label: 'Yrkesbil',
-						},
-						{
-							value: '65',
-							label: 'Demobil',
-						},
-						{
-							value: '70',
-							label: 'Utleie primærvirksomhet',
-						},
-						{
-							value: '55',
-							label: 'Sporadisk utleie av bil',
-						},
-					]}
-				/> */
+export default Informasjon

@@ -5,6 +5,7 @@ import Oversikt from './prototype/Oversikt'
 import { useState } from 'react'
 import Kvittering from './prototype/Kvittering'
 import Flyt from './prototype/Flyt'
+import Informasjon from './prototype/Informasjon'
 
 export type Status = 'midlertidig' | 'doed' | 'utflyttet' | 'levende' | 'alle'
 export type Gender = 'mann' | 'kvinne' | 'alle'
@@ -25,6 +26,8 @@ function App() {
 	const [selectedCoverage, setSelectedCoverage] = useState<
 		'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
 	>('Kasko')
+	const [price, setPrice] = useState(1000)
+	const [isPriceLoading, setIsPriceLoading] = useState(false)
 
 	return (
 		<>
@@ -33,6 +36,10 @@ function App() {
 				{view === 'START' && <Oversikt setView={setView} />}
 				{view === 'FLYT' && (
 					<Flyt
+						price={price}
+						isPriceLoading={isPriceLoading}
+						setPrice={setPrice}
+						setIsPriceLoading={setIsPriceLoading}
 						setView={setView}
 						kjorelengde={kjorelengde}
 						setKjorelengde={setKjorelengde}
@@ -42,6 +49,18 @@ function App() {
 						setBonus={setBonus}
 						kilometerstand={kilometerstand}
 						setKilometerstand={setKilometerstand}
+						selectedCoverage={selectedCoverage}
+						setSelectedCoverage={setSelectedCoverage}
+					/>
+				)}
+				{view === 'INFORMASJON' && (
+					<Informasjon
+						price={price}
+						isPriceLoading={isPriceLoading}
+						setView={setView}
+						kjorelengde={kjorelengde}
+						egenandel={egenandel}
+						bonus={bonus}
 						selectedCoverage={selectedCoverage}
 						setSelectedCoverage={setSelectedCoverage}
 					/>

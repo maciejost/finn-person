@@ -15,6 +15,7 @@
 		"@fremtind/jkl-button-react": "^15.0.17",
 		"@fremtind/jkl-card": "^11.1.0",
 		"@fremtind/jkl-card-react": "^11.2.2",
+		"@fremtind/jkl-checkbox-react": "^11.1.15",
 		"@fremtind/jkl-core": "^13.4.2",
 		"@fremtind/jkl-formatters-util": "^5.0.44",
 		"@fremtind/jkl-icons-react": "^8.5.0",
