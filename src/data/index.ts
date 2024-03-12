@@ -1,4 +1,4 @@
-type Person = {
+export type Person = {
 	firstName: string
 	lastName: string
 	ssn: string

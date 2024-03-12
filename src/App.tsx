@@ -1,23 +1,73 @@
+import { Filters } from './components/Filters'
+import Prototype from './prototype'
+import SideMeny from './prototype/Sidemeny'
+import Oversikt from './prototype/Oversikt'
 import { useState } from 'react'
+import Kvittering from './prototype/Kvittering'
+import Flyt from './prototype/Flyt'
+import Informasjon from './prototype/Informasjon'
+
+export type Status = 'midlertidig' | 'doed' | 'utflyttet' | 'levende' | 'alle'
+export type Gender = 'mann' | 'kvinne' | 'alle'
+
+export type Filters = {
+	status: Status
+	gender: Gender
+}
+
 function App() {
-	const [count, setCount] = useState(0)
+	const [view, setView] = useState<
+		'START' | 'FLYT' | 'INFORMASJON' | 'KVITTERING'
+	>('START')
+	const [kjorelengde, setKjorelengde] = useState('12')
+	const [egenandel, setEgenandel] = useState('1')
+	const [bonus, setBonus] = useState('75')
+	const [kilometerstand, setKilometerstand] = useState<string | undefined>()
+	const [selectedCoverage, setSelectedCoverage] = useState<
+		'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
+	>('Kasko')
+	const [price, setPrice] = useState(1000)
+	const [isPriceLoading, setIsPriceLoading] = useState(false)
 
 	return (
 		<>
-			<h1 className='text-center my-64'>Vite + React</h1>
-			<div className='rounded-xl bg-varde p-40 flex items-center justify-center flex-col gap-24 max-w-xl mx-auto'>
-				<button
-					onClick={() => setCount(count => count + 1)}
-					className='px-24 py-16 bg-granitt text-snohvit rounded-lg shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-granitt focus:ring-opacity-50 transition-all duration-300 ease-in-out'
-				>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
+			<Prototype>
+				<SideMeny />
+				{view === 'START' && <Oversikt setView={setView} />}
+				{view === 'FLYT' && (
+					<Flyt
+						price={price}
+						isPriceLoading={isPriceLoading}
+						setPrice={setPrice}
+						setIsPriceLoading={setIsPriceLoading}
+						setView={setView}
+						kjorelengde={kjorelengde}
+						setKjorelengde={setKjorelengde}
+						egenandel={egenandel}
+						setEgenandel={setEgenandel}
+						bonus={bonus}
+						setBonus={setBonus}
+						kilometerstand={kilometerstand}
+						setKilometerstand={setKilometerstand}
+						selectedCoverage={selectedCoverage}
+						setSelectedCoverage={setSelectedCoverage}
+					/>
+				)}
+				{view === 'INFORMASJON' && (
+					<Informasjon
+						price={price}
+						isPriceLoading={isPriceLoading}
+						setView={setView}
+						kjorelengde={kjorelengde}
+						egenandel={egenandel}
+						bonus={bonus}
+						selectedCoverage={selectedCoverage}
+						setSelectedCoverage={setSelectedCoverage}
+					/>
+				)}
+				{view === 'KVITTERING' && <Kvittering />}
+			</Prototype>
 		</>
 	)
 }
-
 export default App

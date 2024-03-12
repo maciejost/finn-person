@@ -12,7 +12,19 @@
 		"test": "vitest run && tsc --noEmit"
 	},
 	"dependencies": {
+		"@fremtind/jkl-button-react": "^15.0.17",
+		"@fremtind/jkl-card": "^11.1.0",
+		"@fremtind/jkl-card-react": "^11.2.2",
+		"@fremtind/jkl-checkbox-react": "^11.1.15",
 		"@fremtind/jkl-core": "^13.4.2",
+		"@fremtind/jkl-formatters-util": "^5.0.44",
+		"@fremtind/jkl-icons-react": "^8.5.0",
+		"@fremtind/jkl-input-group-react": "^3.0.22",
+		"@fremtind/jkl-list-react": "^10.1.3",
+		"@fremtind/jkl-loader-react": "^12.0.10",
+		"@fremtind/jkl-select": "^11.1.9",
+		"@fremtind/jkl-select-react": "^14.1.24",
+		"@fremtind/jkl-text-input-react": "^14.2.9",
 		"@fremtind/jkl-webfonts": "^3.0.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
