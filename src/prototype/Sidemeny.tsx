@@ -7,8 +7,8 @@ const SideMeny = () => {
 		>
 			<div className='sidemeny__header'>
 				<div className='sidemeny__org'>
-					<p>ALBJERK BIL RINGERIKE AS</p>
-					<p>817 203 752</p>
+					<p>Azos Bygg Ostrowski AS</p>
+					<p>123 456 789</p>
 				</div>
 				<button
 					data-density='compact'
@@ -104,7 +104,7 @@ const SideMeny = () => {
 											data-testautoid='megameny-tilganger'
 											href='#'
 										>
-											Tilganger - ALBJERK BIL RINGERIKE AS{' '}
+											Tilganger - Azos Bygg Ostrowski AS{' '}
 										</a>
 									</li>
 								</ul>
