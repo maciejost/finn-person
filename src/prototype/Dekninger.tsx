@@ -6,9 +6,17 @@ const Card: React.FC<{
 	title: string
 	covers: string[]
 	price: number
+	isPriceLoading: boolean
 	selectedCoverage: 'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
 	setSelectedCoverage: () => void
-}> = ({ title, covers, price, selectedCoverage, setSelectedCoverage }) => {
+}> = ({
+	title,
+	covers,
+	price,
+	selectedCoverage,
+	setSelectedCoverage,
+	isPriceLoading,
+}) => {
 	const isCurrent = selectedCoverage === title
 	return (
 		<div
@@ -18,15 +26,14 @@ const Card: React.FC<{
 			}`}
 		>
 			<h3 className='mb-4 text-2xl font-semibold'>{title}</h3>
-			<div className='flex justify-center items-baseline my-8'>
-				<span className='mr-2 text-5xl font-extrabold'>
-					{formatValuta(price)}
-				</span>
-				<span className='text-gray-500 dark:text-gray-400'>
-					/måned, inkludert trafikkforsikringsavgift
-				</span>
-			</div>
-
+			{isPriceLoading ? (
+				<p>loadin</p>
+			) : (
+				<div className=' my-8'>
+					<span className=''>{formatValuta(price)}</span>/måned,
+					inkludert trafikkforsikringsavgift
+				</div>
+			)}
 			<List className='mb-8 body space-y-4 text-left'>
 				{covers.map(item => (
 					<CheckListItem
@@ -41,32 +48,34 @@ const Card: React.FC<{
 	)
 }
 
+const toppKasko = [
+	'Ansvar og rettshjelp',
+	'Glasskader, brann og tyveri',
+	'Fastmontert ekstrautstyr',
+	'Personlige eiendeler',
+	'Veihjelp',
+	'Uhell med bilen din',
+	'8 års garanti på reparasjoner',
+	'Ny bil ved totalskade',
+	'Punkteringsskader uten bonustap (valgfritt)',
+	'Hvis bilen er leaset: Startleie',
+	'Skader på maskin og elektronikk',
+	'Skade på parkert bil uten bonustap',
+	'Leiebil',
+]
+
+const kasko = toppKasko.slice(0, 10)
+const delKasko = toppKasko.slice(0, 5)
+const ansvar = toppKasko.slice(0, 1)
+
 export const Dekninger: React.FC<{
 	selectedCoverage: 'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
 	setSelectedCoverage: React.Dispatch<
 		React.SetStateAction<'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'>
 	>
-}> = ({ selectedCoverage, setSelectedCoverage }) => {
-	const toppKasko = [
-		'Ansvar og rettshjelp',
-		'Glasskader, brann og tyveri',
-		'Fastmontert ekstrautstyr',
-		'Personlige eiendeler',
-		'Veihjelp',
-		'Uhell med bilen din',
-		'8 års garanti på reparasjoner',
-		'Ny bil ved totalskade',
-		'Punkteringsskader uten bonustap (valgfritt)',
-		'Hvis bilen er leaset: Startleie',
-		'Skader på maskin og elektronikk',
-		'Skade på parkert bil uten bonustap',
-		'Leiebil',
-	]
-
-	const kasko = toppKasko.slice(0, 10)
-	const delKasko = toppKasko.slice(0, 5)
-	const ansvar = toppKasko.slice(0, 1)
-
+	price: number
+	isPriceLoading: boolean
+}> = ({ selectedCoverage, setSelectedCoverage, price, isPriceLoading }) => {
 	return (
 		<div className='mb-64'>
 			<section className='bg-white dark:bg-gray-900 mt-64'>
@@ -74,7 +83,8 @@ export const Dekninger: React.FC<{
 					<div className='grid grid-cols-4 gap-16 justify-center'>
 						<Card
 							title='Toppkasko'
-							price={1000}
+							price={price * 1.7}
+							isPriceLoading={isPriceLoading}
 							covers={toppKasko}
 							setSelectedCoverage={() =>
 								setSelectedCoverage('Toppkasko')
@@ -83,7 +93,8 @@ export const Dekninger: React.FC<{
 						/>
 						<Card
 							title='Kasko'
-							price={1000}
+							price={price * 1.2}
+							isPriceLoading={isPriceLoading}
 							covers={kasko}
 							setSelectedCoverage={() =>
 								setSelectedCoverage('Kasko')
@@ -92,7 +103,8 @@ export const Dekninger: React.FC<{
 						/>
 						<Card
 							title='Delkasko'
-							price={1000}
+							price={price * 0.8}
+							isPriceLoading={isPriceLoading}
 							covers={delKasko}
 							setSelectedCoverage={() =>
 								setSelectedCoverage('Delkasko')
@@ -101,7 +113,8 @@ export const Dekninger: React.FC<{
 						/>
 						<Card
 							title='Ansvar'
-							price={1000}
+							price={price * 0.5}
+							isPriceLoading={isPriceLoading}
 							covers={ansvar}
 							setSelectedCoverage={() =>
 								setSelectedCoverage('Ansvar')

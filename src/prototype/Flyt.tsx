@@ -3,6 +3,8 @@ import { Dekninger } from './Dekninger'
 import { CheckListItem, List } from '@fremtind/jkl-list-react'
 import { formatValuta } from '@fremtind/jkl-formatters-util'
 import { Select } from '@fremtind/jkl-select-react'
+import { useEffect, useState } from 'react'
+import { calculatePrice } from './calculatePrice'
 
 const lengthOptions = [
 	{
@@ -138,6 +140,16 @@ const Flyt: React.FC<{
 	selectedCoverage,
 	setSelectedCoverage,
 }) => {
+	const [price, setPrice] = useState(1000)
+	const [isPriceLoading, setIsPriceLoading] = useState(false)
+
+	let multiplier = 1
+
+	if (selectedCoverage === 'Toppkasko') multiplier = 1.7
+	if (selectedCoverage === 'Delkasko') multiplier = 0.8
+	if (selectedCoverage === 'Ansvar') multiplier = 0.5
+	if (selectedCoverage === 'Kasko') multiplier = 1.2
+
 	const Summary = () => {
 		return (
 			<div className='rounded-md border w-1/3 border-border-separator py-40 px-24'>
@@ -172,7 +184,13 @@ const Flyt: React.FC<{
 						i bonus som overføres
 					</CheckListItem>
 				</List>
-				<p className='heading-3 mt-24'>{formatValuta(1000)}/måned</p>
+				{isPriceLoading ? (
+					<span>loadin</span>
+				) : (
+					<p className='heading-3 mt-24'>
+						{formatValuta(price * multiplier)}/måned
+					</p>
+				)}
 			</div>
 		)
 	}
@@ -181,34 +199,36 @@ const Flyt: React.FC<{
 		return (
 			<div className='rounded-md w-1/2 bg-hvit py-40 px-24'>
 				<h2 className='heading-3 mb-24'>Om bilen</h2>
-				<TextInput
-					label='Kilometerstand'
-					placeholder='0 km'
-					value={kilometerstand}
-					onChange={e => setKilometerstand(e.target.value)}
-				/>
-				<Select
-					name='view'
-					value={kjorelengde}
-					onChange={e => setKjorelengde(e.target.value)}
-					label='Kjørelengde'
-					items={lengthOptions}
-				/>
-				<Select
-					name='view'
-					value={egenandel}
-					onChange={e => setEgenandel(e.target.value)}
-					label='Egenandel'
-					items={deductibleOptions}
-				/>
-				<Select
-					name='view'
-					value={bonus}
-					onChange={e => setBonus(e.target.value)}
-					label='Bonus'
-					items={bonusOptions}
-				/>
-				<div className='mt-24 flex gap-16'>
+				<div className='flex flex-col gap-24'>
+					<TextInput
+						label='Kilometerstand'
+						placeholder='0 km'
+						value={kilometerstand}
+						onChange={e => setKilometerstand(e.target.value)}
+					/>
+					<Select
+						name='view'
+						value={kjorelengde}
+						onChange={e => setKjorelengde(e.target.value)}
+						label='Kjørelengde'
+						items={lengthOptions}
+					/>
+					<Select
+						name='view'
+						value={egenandel}
+						onChange={e => setEgenandel(e.target.value)}
+						label='Egenandel'
+						items={deductibleOptions}
+					/>
+					<Select
+						name='view'
+						value={bonus}
+						onChange={e => setBonus(e.target.value)}
+						label='Bonus'
+						items={bonusOptions}
+					/>
+				</div>
+				<div className='mt-32 flex gap-16'>
 					<button
 						className='jkl-button jkl-button--secondary'
 						onClick={() => setView('START')}
@@ -226,6 +246,16 @@ const Flyt: React.FC<{
 		)
 	}
 
+	useEffect(() => {
+		setIsPriceLoading(true)
+		const newPrice = calculatePrice(kjorelengde, egenandel, bonus)
+		console.log('newPrice', newPrice)
+		setPrice(newPrice)
+		setTimeout(() => {
+			setIsPriceLoading(false)
+		}, 500)
+	}, [kjorelengde, egenandel, bonus])
+
 	return (
 		<div
 			style={{
@@ -234,7 +264,7 @@ const Flyt: React.FC<{
 		>
 			<nav
 				aria-label='Sti'
-				className='jkl-breadcrumb max-width-content  w-full  pt-16 md:px-40'
+				className='jkl-breadcrumb max-width-content   w-full  pt-40 md:pr-40 pl-16'
 			>
 				<ol className='jkl-breadcrumb__list'>
 					<li className='jkl-breadcrumb__item'>
@@ -276,7 +306,7 @@ const Flyt: React.FC<{
 					</li>
 				</ol>
 			</nav>
-			<main className='pl-40 max-width-content  mt-40 w-full flex-grow'>
+			<main className='pl-16 max-width-content  mt-40 w-full flex-grow'>
 				<h1 className='title my-40'>
 					Flytt forsikringen på din ID.3 til oss
 				</h1>
@@ -285,6 +315,8 @@ const Flyt: React.FC<{
 					<Summary />
 				</div>
 				<Dekninger
+					isPriceLoading={isPriceLoading}
+					price={price}
 					selectedCoverage={selectedCoverage}
 					setSelectedCoverage={setSelectedCoverage}
 				/>
