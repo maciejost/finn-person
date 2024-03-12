@@ -34,18 +34,18 @@ const Kvittering = () => {
               className="jkl-link"
               href="http://localhost.sparebank1.no:3000/bedrift/kjop/reise"
             >
-              Reiseforsikring bedrift
+              Bilforsikring bedrift
             </a>
           </li>
         </ol>
       </nav>
-      <main className="max-width-content mx-auto  mt-40 w-full flex-grow">
+      <main className="max-width-content mx-auto  mt-40 w-full flex-grow ">
         <div className="relative flex min-w-full items-center justify-end   gap-40">
           <div className="sm:absolute sm:left-0  w-full flex-shrink-0">
             <div className="flex w-full flex-wrap justify-between gap-40 md:flex-nowrap md:justify-start md:gap-64">
               <div className="body mb-64 flex min-w-[320px] max-w-[500px] flex-col gap-24 rounded-[4px] rounded-s bg-background-container-high p-24 sm:mb-0 sm:gap-40 sm:p-40">
                 <h1 className="title-small">Kvittering</h1>
-                <p className="body">Reiseforsikringen starter 08.03.2024.</p>
+                <p className="body">Forsikringen starter 12.03.2024.</p>
                 <div>
                   <p className=" font-bold ">Dekker</p>
                   <ul className="jkl-list" data-testid="jkl-list">
@@ -53,19 +53,19 @@ const Kvittering = () => {
                       className="jkl-list__item jkl-list__item--iconed jkl-list__item--check"
                       data-testid="jkl-list-item"
                     >
-                      ansatte og deres familier
+                      Toppkasko
                     </li>
                     <li
                       className="jkl-list__item jkl-list__item--iconed jkl-list__item--check"
                       data-testid="jkl-list-item"
                     >
-                      jobb- og fritidsreiser
+                      Hjelp på stedet
                     </li>
                     <li
                       className="jkl-list__item jkl-list__item--iconed jkl-list__item--check"
                       data-testid="jkl-list-item"
                     >
-                      inntil 70 dager per reise
+                      Leiebil ved skade
                     </li>
                   </ul>
                 </div>
