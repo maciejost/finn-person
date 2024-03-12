@@ -96,8 +96,7 @@ const Kvittering = () => {
 									<button
 										className='jkl-button jkl-button--primary '
 										onClick={() => {
-											window.location.href =
-												window.location.origin
+											window.location.reload()
 										}}
 									>
 										Se avtalen
