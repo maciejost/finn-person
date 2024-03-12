@@ -1,11 +1,25 @@
 import { TextInput } from '@fremtind/jkl-text-input-react'
 import { Dekninger } from './Dekninger'
+import { CheckListItem, List } from '@fremtind/jkl-list-react'
+import { formatValuta } from '@fremtind/jkl-formatters-util'
 
 const Flyt = () => {
 	const Summary = () => {
 		return (
 			<div className='rounded-md border w-1/3 border-border-separator py-40 px-24'>
-				<h2 className='heading-3 mb-24'>Oppsummering</h2>
+				<h2 className='heading-3 mb-16'>Oppsummering</h2>
+				<p className='body mb-8'>
+					Din Volkswagen ID.3 (EB87553) vil bli forsikret med:{' '}
+				</p>
+				<List className='body'>
+					<CheckListItem>KJORELENGDE kilometer per år</CheckListItem>
+					<CheckListItem>EGENANDEL i egenandel</CheckListItem>
+					<CheckListItem>
+						EGENANDEL i bonus som overføres
+					</CheckListItem>
+					<CheckListItem>DEKNING-dekning</CheckListItem>
+				</List>
+				<p className='heading-3 mt-24'>{formatValuta(1000)}/måned</p>
 			</div>
 		)
 	}
