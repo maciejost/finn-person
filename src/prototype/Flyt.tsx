@@ -90,13 +90,13 @@ const Form: React.FC<{
 					className='jkl-button jkl-button--secondary'
 					onClick={() => setView('START')}
 				>
-					Tilbake
+					Avbryt
 				</button>
 				<button
 					className='jkl-button jkl-button--primary'
 					onClick={() => setView('INFORMASJON')}
 				>
-					Videre
+					Neste
 				</button>
 			</div>
 		</div>
