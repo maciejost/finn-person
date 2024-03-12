@@ -4,6 +4,7 @@ import SideMeny from './prototype/Sidemeny'
 import Oversikt from './prototype/Oversikt'
 import { useState } from 'react'
 import Kvittering from './prototype/Kvittering'
+import Flyt from './prototype/Flyt'
 
 export type Status = 'midlertidig' | 'doed' | 'utflyttet' | 'levende' | 'alle'
 export type Gender = 'mann' | 'kvinne' | 'alle'
@@ -23,6 +24,7 @@ function App() {
 				<SideMeny />
 				{view === 'START' && <Oversikt setView={setView} />}
 				{view === 'KVITTERING' && <Kvittering />}
+				{view === 'FLYT' && <Flyt />}
 			</Prototype>
 		</>
 	)

@@ -5,6 +5,9 @@
 @import url('@fremtind/jkl-icons/icons.min.css');
 @import url('@fremtind/jkl-input-group/input-group.min.css');
 @import url('@fremtind/jkl-button/button.min.css');
+@import url("@fremtind/jkl-text-input/text-input.min.css");
+@import url("@fremtind/jkl-icon-button/icon-button.min.css");
+@import url("@fremtind/jkl-tooltip/tooltip.min.css");
 
 @tailwind base;
 @tailwind components;

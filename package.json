@@ -21,6 +21,7 @@
 		"@fremtind/jkl-input-group-react": "^3.0.22",
 		"@fremtind/jkl-select": "^11.1.9",
 		"@fremtind/jkl-select-react": "^14.1.24",
+		"@fremtind/jkl-text-input-react": "^14.2.9",
 		"@fremtind/jkl-webfonts": "^3.0.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"

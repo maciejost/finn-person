@@ -6,7 +6,11 @@ const Oversikt: React.FC<{
 	>
 }> = ({ setView }) => {
 	return (
-		<main>
+		<main
+			style={{
+				minHeight: 'calc(100vh - 152px)',
+			}}
+		>
 			<div id='innhold'>
 				<div className='side agreement-overview'>
 					<div className='side-header__wrapper side-header__wrapper--with-megameny'>
