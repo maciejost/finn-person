@@ -152,7 +152,7 @@ const Form: React.FC<{
 					searchable
 					value={insuranceCompany}
 					onChange={e => setInsuranceCompany(e.target.value)}
-					label='Selskap du flytter fra'
+					label='Selskapet vi skal flytte bonusen din fra'
 					items={insuranceCompanies}
 				/>
 				<Checkbox name='Vilkar' value='true'>
