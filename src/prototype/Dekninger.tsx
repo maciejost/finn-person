@@ -13,7 +13,7 @@ const Card: React.FC<{
     <div
       onClick={setSelectedCoverage}
       className={`flex cursor-pointer flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white bg-hvit ${
-        isCurrent && "bg-[#C8ECD2]"
+        isCurrent && "!bg-[#C8ECD2]"
       }`}
     >
       <h3 className="mb-4 text-2xl font-semibold">{title}</h3>
