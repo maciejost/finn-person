@@ -1,6 +1,6 @@
 import { formatValuta } from '@fremtind/jkl-formatters-util'
 import { CheckListItem, List } from '@fremtind/jkl-list-react'
-import React, { useState } from 'react'
+import React from 'react'
 
 const Card: React.FC<{
 	title: string
@@ -29,7 +29,10 @@ const Card: React.FC<{
 
 			<List className='mb-8 body space-y-4 text-left'>
 				{covers.map(item => (
-					<CheckListItem className='flex items-center space-x-3'>
+					<CheckListItem
+						key={item}
+						className='flex items-center space-x-3'
+					>
 						<span>{item}</span>
 					</CheckListItem>
 				))}
@@ -38,7 +41,12 @@ const Card: React.FC<{
 	)
 }
 
-export const Dekninger = () => {
+export const Dekninger: React.FC<{
+	selectedCoverage: 'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
+	setSelectedCoverage: React.Dispatch<
+		React.SetStateAction<'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'>
+	>
+}> = ({ selectedCoverage, setSelectedCoverage }) => {
 	const toppKasko = [
 		'Ansvar og rettshjelp',
 		'Glasskader, brann og tyveri',
@@ -59,12 +67,8 @@ export const Dekninger = () => {
 	const delKasko = toppKasko.slice(0, 5)
 	const ansvar = toppKasko.slice(0, 1)
 
-	const [selectedCoverage, setSelectedCoverage] = useState<
-		'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
-	>('Kasko')
-
 	return (
-		<div>
+		<div className='mb-64'>
 			<section className='bg-white dark:bg-gray-900 mt-64'>
 				<div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
 					<div className='grid grid-cols-4 gap-16 justify-center'>

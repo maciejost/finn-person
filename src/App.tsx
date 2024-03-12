@@ -23,7 +23,7 @@ function App() {
 			<Prototype>
 				<SideMeny />
 				{view === 'START' && <Oversikt setView={setView} />}
-				{view === 'FLYT' && <Flyt />}
+				{view === 'FLYT' && <Flyt setView={setView} />}
 				{view === 'KVITTERING' && <Kvittering />}
 			</Prototype>
 		</>
