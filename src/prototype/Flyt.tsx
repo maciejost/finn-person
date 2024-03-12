@@ -2,8 +2,16 @@ import { TextInput } from '@fremtind/jkl-text-input-react'
 import { Dekninger } from './Dekninger'
 import { CheckListItem, List } from '@fremtind/jkl-list-react'
 import { formatValuta } from '@fremtind/jkl-formatters-util'
+import { Select } from '@fremtind/jkl-select-react'
+import { useState } from 'react'
 
 const Flyt = () => {
+	const [kjorelengde, setKjorelengde] = useState('12')
+	/* const [bruksomrade, setBruksomrade] = useState('10') */
+	const [egenandel, setEgenandel] = useState('1')
+	const [bonus, setBonus] = useState('75')
+	const [kilometerstand, setKilometerstand] = useState('10000')
+
 	const Summary = () => {
 		return (
 			<div className='rounded-md border w-1/3 border-border-separator py-40 px-24'>
@@ -29,10 +37,175 @@ const Flyt = () => {
 			<div className='rounded-md w-1/2 bg-hvit py-40 px-24'>
 				<h2 className='heading-3 mb-24'>Om bilen</h2>
 				<TextInput
-					disabled
-					label='Registreringsnummer'
-					placeholder='Registreringsnummer'
-					value={'EB87553'}
+					label='Kilometerstand'
+					placeholder='0 km'
+					value={kilometerstand}
+					onChange={e => setKilometerstand(e.target.value)}
+				/>
+				<Select
+					name='view'
+					value={kjorelengde}
+					onChange={e => setKjorelengde(e.target.value)}
+					label='Kjørelengde'
+					items={[
+						{
+							value: '99',
+							label: 'Ubegrenset',
+						},
+						{
+							value: '12',
+							label: '12 000 km årlig',
+						},
+						{
+							value: '25',
+							label: '25 000 km årlig',
+						},
+						{
+							value: '16',
+							label: '16 000 km årlig',
+						},
+						{
+							value: '8',
+							label: ' 8 000 km årlig',
+						},
+						{
+							value: '60',
+							label: '60 000 km årlig',
+						},
+						{
+							value: '50',
+							label: '50 000 km årlig',
+						},
+						{
+							value: '40',
+							label: '40 000 km årlig',
+						},
+						{
+							value: '30',
+							label: '30 000 km årlig',
+						},
+						{
+							value: '20',
+							label: '20 000 km årlig',
+						},
+						{
+							value: '75',
+							label: '75 000 km årlig',
+						},
+					]}
+				/>
+
+				{/* 	<Select
+					name='view'
+					value={bruksomrade}
+					onChange={e => setBruksomrade(e.target.value)}
+					label='Bruksområde'
+					items={[
+						{
+							value: '25',
+							label: 'Drosje',
+						},
+						{
+							value: '60',
+							label: 'Utleiebil verksted, bilforhandler o.l.',
+						},
+						{
+							value: '50',
+							label: 'Begravelse bil',
+						},
+						{
+							value: '40',
+							label: 'Skolebil',
+						},
+						{
+							value: '30',
+							label: 'Budbil',
+						},
+						{
+							value: '10',
+							label: 'Yrkesbil',
+						},
+						{
+							value: '65',
+							label: 'Demobil',
+						},
+						{
+							value: '70',
+							label: 'Utleie primærvirksomhet',
+						},
+						{
+							value: '55',
+							label: 'Sporadisk utleie av bil',
+						},
+					]}
+				/> */}
+				<Select
+					name='view'
+					value={egenandel}
+					onChange={e => setEgenandel(e.target.value)}
+					label='Egenandel'
+					items={[
+						{
+							value: '1',
+							label: '10 000',
+						},
+						{
+							value: '2',
+							label: '12 000',
+						},
+						{
+							value: '3',
+							label: '16 000',
+						},
+						{
+							value: '4',
+							label: '20 000',
+						},
+					]}
+				/>
+				<Select
+					name='view'
+					value={bonus}
+					onChange={e => setBonus(e.target.value)}
+					label='Bonus'
+					items={[
+						{
+							value: '75',
+							label: '75%',
+						},
+						{
+							value: '10',
+							label: '10%',
+						},
+						{
+							value: '20',
+							label: '20%',
+						},
+						{
+							value: '30',
+							label: '30%',
+						},
+						{
+							value: '40',
+							label: '40%',
+						},
+						{
+							value: '50',
+							label: '50%',
+						},
+						{
+							value: '60',
+							label: '60%',
+						},
+						{
+							value: '70',
+							label: '70%',
+						},
+						{
+							value: '99',
+							label: '0 eller mindre',
+						},
+					]}
 				/>
 			</div>
 		)
