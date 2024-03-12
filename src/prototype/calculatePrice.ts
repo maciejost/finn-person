@@ -3,7 +3,7 @@ export const calculatePrice = (
 	egenandel: string,
 	bonus: string
 ) => {
-	let basePrice = 758
+	let basePrice = 1268
 
 	const setPrice = (newPrice: number) => (basePrice = newPrice)
 
