@@ -9,48 +9,51 @@ import { Loader } from '@fremtind/jkl-loader-react'
 
 const lengthOptions = [
 	{
-		value: '99',
-		label: 'Ubegrenset',
+		value: '8',
+		label: ' 8 000 km årlig',
 	},
 	{
 		value: '12',
 		label: '12 000 km årlig',
 	},
-	{
-		value: '25',
-		label: '25 000 km årlig',
-	},
+
 	{
 		value: '16',
 		label: '16 000 km årlig',
-	},
-	{
-		value: '8',
-		label: ' 8 000 km årlig',
-	},
-	{
-		value: '60',
-		label: '60 000 km årlig',
-	},
-	{
-		value: '50',
-		label: '50 000 km årlig',
-	},
-	{
-		value: '40',
-		label: '40 000 km årlig',
-	},
-	{
-		value: '30',
-		label: '30 000 km årlig',
 	},
 	{
 		value: '20',
 		label: '20 000 km årlig',
 	},
 	{
+		value: '25',
+		label: '25 000 km årlig',
+	},
+	{
+		value: '30',
+		label: '30 000 km årlig',
+	},
+	{
+		value: '40',
+		label: '40 000 km årlig',
+	},
+	{
+		value: '50',
+		label: '50 000 km årlig',
+	},
+
+	{
+		value: '60',
+		label: '60 000 km årlig',
+	},
+
+	{
 		value: '75',
 		label: '75 000 km årlig',
+	},
+	{
+		value: '99',
+		label: 'Ubegrenset',
 	},
 ]
 
@@ -75,8 +78,8 @@ const deductibleOptions = [
 
 const bonusOptions = [
 	{
-		value: '75',
-		label: '75%',
+		value: '99',
+		label: '0 eller mindre',
 	},
 	{
 		value: '10',
@@ -107,8 +110,8 @@ const bonusOptions = [
 		label: '70%',
 	},
 	{
-		value: '99',
-		label: '0 eller mindre',
+		value: '75',
+		label: '75%',
 	},
 ]
 

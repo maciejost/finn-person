@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { Loader } from '@fremtind/jkl-loader-react'
 import { Checkbox } from '@fremtind/jkl-checkbox-react'
 import { PrimaryButton } from '@fremtind/jkl-button-react'
+import { insuranceCompanies } from './insuranceCompanies'
 
 const lengthOptions = [
 	{
@@ -216,10 +217,12 @@ const Informasjon: React.FC<{
 					/>
 					<Select
 						name='view'
+						width='320px'
+						searchable
 						value={insuranceCompany}
 						onChange={e => setInsuranceCompany(e.target.value)}
 						label='Selskap du flytter fra'
-						items={lengthOptions}
+						items={insuranceCompanies}
 					/>
 					<Checkbox name='Vilkar' value='true'>
 						Jeg bekrefter å ha gitt riktige opplysninger, lest og
