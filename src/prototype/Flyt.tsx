@@ -1,3 +1,4 @@
+import { TextInput } from "@fremtind/jkl-text-input-react";
 import { Dekninger } from "./Dekninger";
 import { Select } from "@fremtind/jkl-select-react";
 import { useState } from "react";
@@ -7,6 +8,7 @@ const Flyt = () => {
   const [bruksomrade, setBruksomrade] = useState("10");
   const [egenandel, setEgenandel] = useState("1");
   const [bonus, setBonus] = useState("75");
+  const [kilometerstand, setKilometerstand] = useState("10000");
   const Summary = () => {
     return (
       <div className="rounded-md border w-1/3 border-border-separator py-40 px-24">
@@ -19,6 +21,7 @@ const Flyt = () => {
     return (
       <div className="rounded-md w-1/2 bg-hvit py-40 px-24">
         <h2 className="heading-3 mb-24">Om bilen</h2>
+        <TextInput disabled label="Kilometerstand" placeholder="" value={""} />
         <Select
           name="view"
           value={kjorelengde}
@@ -71,6 +74,7 @@ const Flyt = () => {
             },
           ]}
         />
+
         <Select
           name="view"
           value={bruksomrade}
