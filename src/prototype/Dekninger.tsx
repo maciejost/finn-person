@@ -22,10 +22,11 @@ const Card: React.FC<{
 	return (
 		<div
 			onClick={setSelectedCoverage}
-			className={`flex body flex-col justify-start transition-all items-center px-16 py-24 rounded-lg bg-hvit border-border-separator border ${
+			className={`flex body flex-col cursor-pointer justify-start transition-all items-center px-16 py-24 rounded-lg bg-hvit border-border-separator border ${
 				isCurrent && '!bg-[#C8ECD2] -translate-y-6'
 			}`}
 		>
+			{isCurrent && <span className=''>Valgt ✔️</span>}
 			<h3 className='mb-8 font-bold heading-3'>{title}</h3>
 			{isPriceLoading ? (
 				<p className='my-16'>
