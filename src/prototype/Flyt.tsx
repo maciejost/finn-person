@@ -1,7 +1,7 @@
 import { TextInput } from '@fremtind/jkl-text-input-react'
 import { Dekninger } from './Dekninger'
 import { CheckListItem, List } from '@fremtind/jkl-list-react'
-import { formatValuta } from '@fremtind/jkl-formatters-util'
+import { formatDate, formatValuta } from '@fremtind/jkl-formatters-util'
 import { Select } from '@fremtind/jkl-select-react'
 import { useEffect } from 'react'
 import { calculatePrice } from './calculatePrice'
@@ -56,6 +56,16 @@ const lengthOptions = [
 		label: 'Ubegrenset',
 	},
 ]
+
+const lengthOptionsAsNumbers = lengthOptions.map(option => {
+	return {
+		label: Number(option.label.replace(/\D/g, '')),
+		value: option.value,
+	}
+})
+
+const dateOneYearFromNow = new Date()
+dateOneYearFromNow.setFullYear(dateOneYearFromNow.getFullYear() + 1)
 
 const deductibleOptions = [
 	{
@@ -221,6 +231,7 @@ const Flyt: React.FC<{
 					<TextInput
 						label='Kilometerstand'
 						placeholder='0 km'
+						type='number'
 						value={kilometerstand}
 						onChange={e => setKilometerstand(e.target.value)}
 					/>
@@ -231,6 +242,20 @@ const Flyt: React.FC<{
 						label='Kjørelengde'
 						items={lengthOptions}
 					/>
+					{kilometerstand &&
+						!!lengthOptionsAsNumbers.find(
+							option => option.value === kjorelengde
+						)?.label && (
+							<p className=' -mt-16 text-text-subdued'>
+								Kilometerstanden kan ikke overstige{' '}
+								{Number(kilometerstand) +
+									/* @ts-expect-error finn riktig */
+									lengthOptionsAsNumbers.find(
+										option => option.value === kjorelengde
+									)?.label}
+								km innen {formatDate(dateOneYearFromNow)}
+							</p>
+						)}
 					<Select
 						name='view'
 						value={egenandel}
