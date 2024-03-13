@@ -84,10 +84,6 @@ export const insuranceCompanies = [
 		label: 'Europeiske Reiseforsikring',
 	},
 	{
-		value: '3515473',
-		label: 'EIGERSUND OG OGNA GJENSIDIGE',
-	},
-	{
 		value: '3944175',
 		label: 'EURO ACCIDENT LIV',
 	},
@@ -105,11 +101,7 @@ export const insuranceCompanies = [
 	},
 	{
 		value: '2889943',
-		label: 'Gjensidige Forsikring BM ASA',
-	},
-	{
-		value: '49',
-		label: 'Gjensidige Forsikring PM ASA',
+		label: 'Gjensidige Forsikring ASA',
 	},
 	{
 		value: '2990123',
@@ -159,10 +151,7 @@ export const insuranceCompanies = [
 		value: '3840661',
 		label: 'IBIS FORSIKRING AS',
 	},
-	{
-		value: '54',
-		label: 'Jernbanepersonalets Forsikring Gjensidig',
-	},
+
 	{
 		value: '38',
 		label: 'KommuneForsikring',
