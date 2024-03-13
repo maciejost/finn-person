@@ -29,8 +29,9 @@ const Card: React.FC<{
 			{isCurrent && <span className=''>Valgt ✔️</span>}
 			<h3 className='mb-8 font-bold heading-3'>{title}</h3>
 			{isPriceLoading ? (
-				<p className='my-16'>
+				<p className='my-16 font-bold mt-8 pb-24 border-b w-full text-center border-border-separator mb-16 '>
 					<Loader
+						className=''
 						textDescription='Laster pris'
 						/* className='!justify-start' */
 					/>
