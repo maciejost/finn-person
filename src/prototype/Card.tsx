@@ -14,7 +14,7 @@ const Card: React.FC<{
 						Volkswagen ID.3 →
 					</h2>
 					<p className='bm-typography jkl-small agreement-card__identificator'>
-						EB87553
+						EB87553 - Forsikret et annet sted
 					</p>
 				</div>
 				<footer className='agreement-card__footer'>
