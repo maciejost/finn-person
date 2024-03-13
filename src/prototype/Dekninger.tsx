@@ -72,9 +72,10 @@ const toppKasko = [
 	'Leiebil',
 ]
 
-const kasko = toppKasko.slice(0, 10)
-const delKasko = toppKasko.slice(0, 5)
-const ansvar = toppKasko.slice(0, 1)
+const kasko = toppKasko.slice(0, 10).reverse()
+const delKasko = toppKasko.slice(0, 5).reverse()
+const ansvar = toppKasko.slice(0, 1).reverse()
+const toppKaskoView = toppKasko.reverse()
 
 export const Dekninger: React.FC<{
 	selectedCoverage: 'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
@@ -93,7 +94,7 @@ export const Dekninger: React.FC<{
 							title='Toppkasko'
 							price={Math.round(price * 1.7)}
 							isPriceLoading={isPriceLoading}
-							covers={toppKasko}
+							covers={toppKaskoView}
 							setSelectedCoverage={() =>
 								setSelectedCoverage('Toppkasko')
 							}
