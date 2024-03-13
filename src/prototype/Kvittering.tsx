@@ -48,10 +48,9 @@ const Kvittering = () => {
 								<p className='body'>
 									Forsikringen på din ID.3 starter{' '}
 									{formatDate(dateOneMonthFromNow)}. Vi sier
-									opp forsikringen din hos{' '}
-									{'{FORSIKRINGSSELSKAP}'} og flytter den til
-									oss sammen med bonusen din, du trenger ikke
-									å gjøre noen ting.
+									opp forsikringen din hos Gjensidige og
+									flytter den til oss sammen med bonusen din,
+									du trenger ikke å gjøre noen ting.
 								</p>
 								<div>
 									<p className=' font-bold '>Dekker</p>

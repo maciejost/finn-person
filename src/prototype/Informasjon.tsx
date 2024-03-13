@@ -142,6 +142,7 @@ const Form: React.FC<{
 				<TextInput
 					label='E-post for kvittering'
 					placeholder='E-postadresse'
+					width='320px'
 					type='email'
 					value={email}
 					onChange={e => setEmail(e.target.value)}
@@ -224,7 +225,7 @@ const Informasjon: React.FC<{
 	if (selectedCoverage === 'Kasko') multiplier = 1.2
 
 	const [insuranceCompany, setInsuranceCompany] = useState('')
-	const [email, setEmail] = useState('')
+	const [email, setEmail] = useState('chris.p.bacon@fremtind.no')
 	const [isPurchasing, setIsPurchasing] = useState(false)
 
 	const Summary = () => {
