@@ -90,7 +90,7 @@ const AlternativVisning = () => {
 			<button
 				onClick={() => setSelectedCoverage('Toppkasko')}
 				className={`
-				${!selectedCoverage === 'Toppkasko' && 'hover:bg-snohvit'}
+				${!(selectedCoverage === 'Toppkasko') && 'hover:bg-snohvit'}
 				${
 					selectedCoverage === 'Toppkasko' && '!bg-[#C8ECD2]'
 				} text-left w-full pt-40 pb-16 px-24`}
@@ -111,7 +111,7 @@ const AlternativVisning = () => {
 			<button
 				onClick={() => setSelectedCoverage('Kasko')}
 				className={`
-				${!selectedCoverage === 'Kasko' && 'hover:bg-snohvit'}
+				${!(selectedCoverage === 'Kasko') && 'hover:bg-snohvit'}
 				${
 					(selectedCoverage === 'Toppkasko' ||
 						selectedCoverage === 'Kasko') &&
@@ -136,7 +136,7 @@ const AlternativVisning = () => {
 			<button
 				onClick={() => setSelectedCoverage('Delkasko')}
 				className={`
-				${!selectedCoverage === 'Delkasko' && 'hover:bg-snohvit'}
+				${!(selectedCoverage === 'Delkasko') && 'hover:bg-snohvit'}
 				${
 					(selectedCoverage === 'Toppkasko' ||
 						selectedCoverage === 'Kasko' ||
@@ -157,7 +157,7 @@ const AlternativVisning = () => {
 			<button
 				onClick={() => setSelectedCoverage('Ansvar')}
 				className={`
-				${!selectedCoverage === 'Ansvar' && 'hover:bg-snohvit'}
+				${!(selectedCoverage === 'Ansvar') && 'hover:bg-snohvit'}
 				${
 					(selectedCoverage === 'Toppkasko' ||
 						selectedCoverage === 'Kasko' ||
