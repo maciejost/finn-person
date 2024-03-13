@@ -1,4 +1,4 @@
-import { formatDate, formatValuta } from '@fremtind/jkl-formatters-util'
+import { formatDate } from '@fremtind/jkl-formatters-util'
 
 const Kvittering = () => {
 	const dateOneMonthFromNow = new Date()
