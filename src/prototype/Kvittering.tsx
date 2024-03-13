@@ -81,9 +81,7 @@ const Kvittering = () => {
 								</div>
 								<div>
 									<p className='font-bold '>Pris</p>
-									<p className='body'>
-										{formatValuta(1344)} per måned
-									</p>
+									<p className='body'>{'{PRIS}'} per måned</p>
 								</div>
 								<div>
 									<p className='font-bold '>Betaling</p>

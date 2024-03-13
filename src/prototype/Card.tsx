@@ -19,7 +19,7 @@ const Card: React.FC<{
 				</div>
 				<footer className='agreement-card__footer'>
 					<button className='jkl-button--primary jkl-button'>
-						Flytt forsikringen hit!
+						Flytt forsikringen til oss
 					</button>
 				</footer>
 			</span>

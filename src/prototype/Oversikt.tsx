@@ -181,7 +181,7 @@ const Oversikt: React.FC<{
 											</footer>
 										</a>
 									</li>
-
+									<Card setView={setView} />
 									<li className='agreement-overview__list-item'>
 										<a className='agreement-card' href='#'>
 											<div className='agreement-card__content'>
@@ -199,7 +199,6 @@ const Oversikt: React.FC<{
 											</footer>
 										</a>
 									</li>
-									<Card setView={setView} />
 
 									<li className='agreement-overview__list-item'>
 										<a className='agreement-card' href='#'>
