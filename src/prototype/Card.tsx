@@ -5,10 +5,11 @@ const Card: React.FC<{
 }> = ({ setView }) => {
 	return (
 		<li
+			data-theme='dark'
 			className='agreement-overview__list-item cursor-pointer'
 			onClick={() => setView('FLYT')}
 		>
-			<span className='agreement-card !bg-[#D9DDFF]'>
+			<span className='agreement-card !bg-[#000]'>
 				<div className='agreement-card__content'>
 					<h2 className='bm-typography jkl-heading-2 agreement-card__heading'>
 						Volkswagen ID.3 →

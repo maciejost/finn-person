@@ -75,10 +75,205 @@ const toppKasko = [
 	'Leiebil',
 ]
 
-const kasko = toppKasko.slice(0, 10).reverse()
-const delKasko = toppKasko.slice(0, 5).reverse()
-const ansvar = toppKasko.slice(0, 1).reverse()
-const toppKaskoView = toppKasko.reverse()
+const kasko = toppKasko.slice(0, 10)
+const delKasko = toppKasko.slice(0, 5)
+const ansvar = toppKasko.slice(0, 1)
+const toppKaskoView = toppKasko
+
+const AlternativVisning = () => {
+	const [selectedCoverage, setSelectedCoverage] = React.useState<
+		'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
+	>('Delkasko')
+
+	return (
+		<div className='body my-64  rounded-lg border border-border-separator bg-hvit flex flex-col items-center text-left w-[500px]'>
+			<button
+				onClick={() => setSelectedCoverage('Toppkasko')}
+				className={`
+				${!selectedCoverage === 'Toppkasko' && 'hover:bg-snohvit'}
+				${
+					selectedCoverage === 'Toppkasko' && '!bg-[#C8ECD2]'
+				} text-left w-full pt-40 pb-16 px-24`}
+			>
+				<h3 className=' text-center self-center mb-24 mt-24 heading-3 pb-16 border-b border-border-separator'>
+					Toppkasko
+				</h3>
+				<List>
+					<CheckListItem>
+						Skader på maskin og elektronikk
+					</CheckListItem>
+					<CheckListItem>
+						Skade på parkert bil uten bonustap
+					</CheckListItem>
+					<CheckListItem>Leiebil</CheckListItem>
+				</List>
+			</button>
+			<button
+				onClick={() => setSelectedCoverage('Kasko')}
+				className={`
+				${!selectedCoverage === 'Kasko' && 'hover:bg-snohvit'}
+				${
+					(selectedCoverage === 'Toppkasko' ||
+						selectedCoverage === 'Kasko') &&
+					'!bg-[#C8ECD2]'
+				} text-left pb-16 w-full px-24`}
+			>
+				<h3 className=' text-center self-center mb-24 mt-24 heading-3 pb-16 border-b border-border-separator'>
+					Kasko
+				</h3>
+				<List>
+					<CheckListItem>Uhell med bilen din</CheckListItem>
+					<CheckListItem>8 års garanti på reparasjoner</CheckListItem>
+					<CheckListItem>Ny bil ved totalskade</CheckListItem>
+					<CheckListItem>
+						Punkteringsskader uten bonustap (valgfritt)
+					</CheckListItem>
+					<CheckListItem>
+						Hvis bilen er leaset: Startleie
+					</CheckListItem>
+				</List>
+			</button>
+			<button
+				onClick={() => setSelectedCoverage('Delkasko')}
+				className={`
+				${!selectedCoverage === 'Delkasko' && 'hover:bg-snohvit'}
+				${
+					(selectedCoverage === 'Toppkasko' ||
+						selectedCoverage === 'Kasko' ||
+						selectedCoverage === 'Delkasko') &&
+					'!bg-[#C8ECD2]'
+				} text-left pb-16 w-full px-24`}
+			>
+				<h3 className=' text-center self-center mb-24 mt-24 heading-3 pb-16 border-b border-border-separator'>
+					Delkasko
+				</h3>
+				<List>
+					<CheckListItem>Glasskader, brann og tyveri</CheckListItem>
+					<CheckListItem>Fastmontert ekstrautstyr</CheckListItem>
+					<CheckListItem>Personlige eiendeler</CheckListItem>
+					<CheckListItem>Veihjelp</CheckListItem>
+				</List>
+			</button>
+			<button
+				onClick={() => setSelectedCoverage('Ansvar')}
+				className={`
+				${!selectedCoverage === 'Ansvar' && 'hover:bg-snohvit'}
+				${
+					(selectedCoverage === 'Toppkasko' ||
+						selectedCoverage === 'Kasko' ||
+						selectedCoverage === 'Delkasko' ||
+						selectedCoverage === 'Ansvar') &&
+					'!bg-[#C8ECD2]'
+				} text-left  pb-40 w-full px-24`}
+			>
+				<h3 className=' text-center self-center mb-24 heading-3 pb-16 border-b border-border-separator'>
+					Ansvar
+				</h3>
+				<List>
+					<CheckListItem>Ansvar og rettshjelp</CheckListItem>
+				</List>
+			</button>
+		</div>
+	)
+}
+
+const AlternativVisningTo = () => {
+	const [selectedCoverage, setSelectedCoverage] = React.useState<
+		'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
+	>('Delkasko')
+
+	return (
+		<div className='body my-64  rounded-lg border border-border-separator bg-hvit flex flex-col items-center text-left w-[500px]'>
+			<button
+				onClick={() => setSelectedCoverage('Ansvar')}
+				className={`
+				${!selectedCoverage === 'Ansvar' && 'hover:bg-snohvit'}
+				${
+					(selectedCoverage === 'Toppkasko' ||
+						selectedCoverage === 'Kasko' ||
+						selectedCoverage === 'Delkasko' ||
+						selectedCoverage === 'Ansvar') &&
+					'!bg-[#C8ECD2]'
+				} text-left  pt-40 pb-16 w-full px-24`}
+			>
+				<h3 className=' text-center self-center mb-24 heading-3 pb-16 border-b border-border-separator'>
+					Ansvar
+				</h3>
+				<List>
+					<CheckListItem>Ansvar og rettshjelp</CheckListItem>
+				</List>
+			</button>
+			<button
+				onClick={() => setSelectedCoverage('Delkasko')}
+				className={`
+				${!selectedCoverage === 'Delkasko' && 'hover:bg-snohvit'}
+				${
+					(selectedCoverage === 'Toppkasko' ||
+						selectedCoverage === 'Kasko' ||
+						selectedCoverage === 'Delkasko') &&
+					'!bg-[#C8ECD2]'
+				} text-left pb-16 w-full px-24`}
+			>
+				<h3 className=' text-center self-center mb-24 mt-24 heading-3 pb-16 border-b border-border-separator'>
+					Delkasko
+				</h3>
+				<List>
+					<CheckListItem>Glasskader, brann og tyveri</CheckListItem>
+					<CheckListItem>Fastmontert ekstrautstyr</CheckListItem>
+					<CheckListItem>Personlige eiendeler</CheckListItem>
+					<CheckListItem>Veihjelp</CheckListItem>
+				</List>
+			</button>
+
+			<button
+				onClick={() => setSelectedCoverage('Kasko')}
+				className={`
+				${!selectedCoverage === 'Kasko' && 'hover:bg-snohvit'}
+				${
+					(selectedCoverage === 'Toppkasko' ||
+						selectedCoverage === 'Kasko') &&
+					'!bg-[#C8ECD2]'
+				} text-left pb-16 w-full px-24`}
+			>
+				<h3 className=' text-center self-center mb-24 mt-24 heading-3 pb-16 border-b border-border-separator'>
+					Kasko
+				</h3>
+				<List>
+					<CheckListItem>Uhell med bilen din</CheckListItem>
+					<CheckListItem>8 års garanti på reparasjoner</CheckListItem>
+					<CheckListItem>Ny bil ved totalskade</CheckListItem>
+					<CheckListItem>
+						Punkteringsskader uten bonustap (valgfritt)
+					</CheckListItem>
+					<CheckListItem>
+						Hvis bilen er leaset: Startleie
+					</CheckListItem>
+				</List>
+			</button>
+			<button
+				onClick={() => setSelectedCoverage('Toppkasko')}
+				className={`
+				${!selectedCoverage === 'Toppkasko' && 'hover:bg-snohvit'}
+				${
+					selectedCoverage === 'Toppkasko' && '!bg-[#C8ECD2]'
+				} text-left w-full pb-40  px-24`}
+			>
+				<h3 className=' text-center self-center mb-24 mt-24 heading-3 pb-16 border-b border-border-separator'>
+					Toppkasko
+				</h3>
+				<List>
+					<CheckListItem>
+						Skader på maskin og elektronikk
+					</CheckListItem>
+					<CheckListItem>
+						Skade på parkert bil uten bonustap
+					</CheckListItem>
+					<CheckListItem>Leiebil</CheckListItem>
+				</List>
+			</button>
+		</div>
+	)
+}
 
 export const Dekninger: React.FC<{
 	selectedCoverage: 'Toppkasko' | 'Kasko' | 'Delkasko' | 'Ansvar'
@@ -136,6 +331,10 @@ export const Dekninger: React.FC<{
 					</div>
 				</div>
 			</section>
+			<div className='flex gap-64'>
+				<AlternativVisning />
+				<AlternativVisningTo />
+			</div>
 		</div>
 	)
 }
