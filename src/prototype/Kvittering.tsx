@@ -121,7 +121,6 @@ const Kvittering = () => {
 								<li>
 									<a
 										className='jkl-link jkl-link--external body'
-										target='_blank'
 										href='#'
 									>
 										Standardisert produktinformasjon (PDF)
@@ -130,7 +129,6 @@ const Kvittering = () => {
 								<li>
 									<a
 										className='jkl-link jkl-link--external body'
-										target='_blank'
 										href='#'
 									>
 										Vilkårsdokument (PDF)

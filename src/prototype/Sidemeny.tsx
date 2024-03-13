@@ -159,7 +159,6 @@ const SideMeny = () => {
 									<a
 										className='jkl-link'
 										href='#'
-										target='_blank'
 										rel='noopener noreferrer'
 										data-testautoid='ga-til-pensjon'
 										data-lenkeid='pensjon'
@@ -171,7 +170,6 @@ const SideMeny = () => {
 									<a
 										className='jkl-link'
 										href='#'
-										target='_blank'
 										rel='noopener noreferrer'
 										data-testautoid='melde-skade'
 										data-lenkeid='meld-skade'

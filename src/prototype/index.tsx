@@ -16,20 +16,12 @@ const Prototype: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 			>
 				<ul className='flex flex-wrap gap-24 gap-y-12'>
 					<li>
-						<a
-							href='#'
-							className='jkl-link jkl-link--external'
-							target='_blank'
-						>
+						<a href='#' className='jkl-link jkl-link--external'>
 							Fremtind Forsikring AS
 						</a>
 					</li>
 					<li>
-						<a
-							href='#'
-							className='jkl-link jkl-link--external'
-							target='_blank'
-						>
+						<a href='#' className='jkl-link jkl-link--external'>
 							Personvern og vilkår
 						</a>
 					</li>
