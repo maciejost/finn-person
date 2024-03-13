@@ -49,7 +49,6 @@ const Oversikt: React.FC<{
 										href='#'
 										className='jkl-button jkl-button--primary'
 										data-density='compact'
-										target='_blank'
 										rel='noreferrer'
 									>
 										Meld skade
@@ -221,7 +220,7 @@ const Oversikt: React.FC<{
 								</ul>
 							</div>
 						</div>
-						<a className='jkl-nav-link' href='#' target='_blank'>
+						<a className='jkl-nav-link' href='#'>
 							Gå til dine privatforsikringer
 						</a>
 						<div className='side-footer'>
